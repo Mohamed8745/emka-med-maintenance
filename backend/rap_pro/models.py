@@ -19,7 +19,7 @@ class Probleme(models.Model):
         default=StatuEnum.OUVERT.value
     )
     date_signalement = models.DateTimeField(auto_now_add=True)
-    image = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(upload_to='imgprob/', null=True, blank=True)
 
     def change_statut(self, new_statut):
         if new_statut in dict(StatuEnum.choices()).keys():

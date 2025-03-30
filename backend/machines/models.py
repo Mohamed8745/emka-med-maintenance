@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from users.models import Technicien
 
- 
+
 
 class Machine(models.Model):
     STATUT_CHOICES = [

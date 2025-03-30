@@ -1,0 +1,168 @@
+/* Desktop.module.css */
+
+.container {
+    background-color: #fffafa;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1534px;
+    height: 742px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header {
+    width: 100%;
+    height: 74px;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.iconButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #1f6899;
+}
+
+.logo {
+    width: 99px;
+    height: 42px;
+    object-fit: cover;
+}
+
+.searchBar {
+    width: 558px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-family: "Jua", sans-serif;
+    font-style: normal;
+    color: #1f6899;
+}
+
+.searchBar:focus{
+    border: 2px solid #1f6899;
+    outline: none;
+}
+
+.profileMenu {
+    position: relative;
+}
+
+.avatarButton {
+    width: 54px;
+    height: 54px;
+    background-color: #1f6899;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 50px;
+}
+
+.dropdownContent {
+    position: absolute;
+    right: 60px;
+    top: 60px;
+    width: 150px;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px #00000040;
+    padding: 10px;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+
+.dropdownItem {
+    font-size: 18px;
+    color: #1f6899;
+    padding: 10px;
+    cursor: pointer;
+    font-family: "Jua", sans-serif;
+    font-style: normal;
+    text-align: center;
+}
+
+.dropdownItem:hover{
+    background-color: #e2e2e2;
+}
+
+.dropdownContent.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+.sidebar {
+    width: 285px;
+    height: 668px;
+    position: absolute;
+    top: 74px;
+    left: 0;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px #00000040;
+    border: 10px solid #d9d9d9;
+}
+
+.navButton {
+    width: 100%;
+    text-align: left;
+    padding: 15px 80px;
+    font-size: 17px;
+    color: #1f6899;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: "Jua", sans-serif;
+    font-style: normal;
+
+}
+
+.navButton:hover {
+    background-color: #e2e2e2;
+}
+
+.customButton {
+    width: 28px;
+    height: 28px;
+    background-color: black;
+    border-radius: 7px;
+    border: 1px solid #282727;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .customButton:hover {
+    background-color: #333;
+  }
+  
+  .chevronIcon {
+    width: 12px;
+    height: 15px;
+    color: white;
+  }
