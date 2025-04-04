@@ -25,7 +25,6 @@ export default function Login() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-        credentials: "include",
       });
 
       if (!response.ok) {
@@ -34,9 +33,9 @@ export default function Login() {
 
       const data = await response.json();
       localStorage.setItem("token", data.access);
-      localStorage.setItem("role", data.role);
+      localStorage.setItem("user", JSON.stringify({ username: data.username, image: data.image , role : data.role}));
 
-      router.push("/dashboard");
+      router.push(`/pages/dashboard`);
     } catch (error) {
       setError("Email ou mot de passe incorrect");
     }

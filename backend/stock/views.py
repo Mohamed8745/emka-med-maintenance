@@ -45,3 +45,5 @@ class StockPieceViewSet(viewsets.ModelViewSet):
     queryset = StockPiece.objects.all()
     serializer_class = StockPieceSerializer
     permission_classes = [permissions.IsAuthenticated, IsMagasinierOrReadOnly]
+
+

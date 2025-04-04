@@ -77,6 +77,10 @@
     border-radius: 50%;
     cursor: pointer;
     margin-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .dropdownContent {
@@ -130,7 +134,7 @@
 .navButton {
     width: 100%;
     text-align: left;
-    padding: 15px 80px;
+    padding: 15px 60px;
     font-size: 17px;
     color: #1f6899;
     background: none;

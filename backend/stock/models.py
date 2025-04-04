@@ -6,7 +6,7 @@ class PieceDeRechange(models.Model):
     categorie = models.CharField(max_length=255)
     quantite = models.IntegerField()
     prxUnitaire = models.FloatField()
-    image = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(upload_to='image_piece/', blank=True, null=True)
 
     def __str__(self):
         return f"{self.nom} ({self.reference})"

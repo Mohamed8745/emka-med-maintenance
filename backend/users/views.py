@@ -11,7 +11,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.hashers import check_password
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 class UtilisateurViewSet(viewsets.ModelViewSet):
@@ -49,7 +52,7 @@ class UtilisateurViewSet(viewsets.ModelViewSet):
            str(data.get("numidentif")) != str(company_record.numidentifuc):
             print("Mismatch in company information!")
             return Response({"error": "Les informations ne correspondent pas à celles de l'entreprise."}, status=status.HTTP_400_BAD_REQUEST)
-        
+        data["username"] = data.get("first_name") + " " + data.get("last_name")
         if 'role' not in data:
             return Response({'role': ['This field is required.']}, status=status.HTTP_400_BAD_REQUEST)
         
@@ -101,23 +104,40 @@ class LoginView(APIView):
     def post(self, request):
         email = request.data.get("email")
         password = request.data.get("password")
-        print("Received email:", email)
-        print("Received password:", password)
 
-        try:
-            user = Utilisateur.objects.get(email=email)
-            print("User found:", user)
-        except Utilisateur.DoesNotExist:
-            print("User not found")
-            return Response({"error": "البريد الإلكتروني غير موجود"}, status=status.HTTP_400_BAD_REQUEST)
+        print("Received email:", email)
+
+        user = get_object_or_404(Utilisateur, email=email)
 
         if not check_password(password, user.password):
             print("Incorrect password")
-            return Response({"error": "كلمة المرور غير صحيحة"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": "كلمة المرور غير صحيحة"}, status=status.HTTP_401_UNAUTHORIZED)
 
         refresh = RefreshToken.for_user(user)
+
         return Response({
             "access": str(refresh.access_token),
             "refresh": str(refresh),
             "role": user.role,
+            "username": user.username,
+            "image": request.build_absolute_uri(user.image.url) if user.image else None
         })
+
+
+        return response
+class UserView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+    def get(self, request):
+        print("User view accessed")
+        print("User:", request.user)  # التحقق من المستخدم
+        user = request.user
+        return Response({
+            "username": user.email,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+            "role": user.role,
+            "image": request.build_absolute_uri(user.image.url) if user.image else None,
+            "user": str(request.user)
+        })
+

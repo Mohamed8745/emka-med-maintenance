@@ -59,14 +59,40 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True  # اسمح بجميع الطلبات لاختبار الاتصال فقط
 CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # تأكد من وجود هذا السطر
     ),
 }
+
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_COOKIE": "access_token",  # اسم الكوكي
+    "AUTH_COOKIE_DOMAIN": None,
+    "AUTH_COOKIE_SECURE": False,  # غيّره إلى True إذا كنت تستخدم HTTPS
+    "AUTH_COOKIE_HTTP_ONLY": True,
+    "AUTH_COOKIE_PATH": "/",
+    "AUTH_COOKIE_SAMESITE": "Lax",
+}
+
+SESSION_COOKIE_SAMESITE = "None"
+CSRF_COOKIE_SAMESITE = "None"
+SSESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
+
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -101,14 +127,6 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     },
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'my-db-django',
-        'USER': 'postgres',
-        'PASSWORD': '123amine',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
 }
 
 
