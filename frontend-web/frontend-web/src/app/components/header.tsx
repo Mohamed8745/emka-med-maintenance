@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
 import React, { JSX, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "./../styles/header.module.css";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
+import { getUser } from "../services/authService"; // Import authService as a named export
 
 interface User {
   username: string;
@@ -54,6 +55,19 @@ const getNavItems = (role: string) => {
   }
 };
 
+const fetchUserData = async () => {
+  try {
+    const user = await getUser();
+    if (user) {
+      console.log("User:", user);
+    } else {
+      console.log("User not authenticated");
+    }
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+  }
+};
+
 export default function header({ children }: { children?: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -63,51 +77,22 @@ export default function header({ children }: { children?: React.ReactNode }) {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const token = localStorage.getItem("token");
-        console.log(token)
-        if (!token) {
-          console.error("Token not found. Redirecting to login...");
+        const userData = await getUser(); // استخدام authService لجلب بيانات المستخدم
+        if (!userData) {
+          console.error("User not found. Redirecting to login...");
           window.location.href = "/pages/login"; // إعادة التوجيه إلى صفحة تسجيل الدخول
           return;
         }
 
-        const response = await fetch("http://127.0.0.1:8000/user/", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        });
-
-        if (!response.ok) {
-          if (response.status === 401) {
-            console.error("Unauthorized: Invalid or expired token");
-            //window.location.href = "/pages/login"; // إعادة التوجيه إلى صفحة تسجيل الدخول
-            return;
-          }
-          throw new Error("Failed to fetch user data");
-        }
-
-        const data = await response.json();
-        console.log("User data fetched:", data);
-        setUser(data);
-        setNavItems(getNavItems(data.role));
+        setUser(userData);
+        setNavItems(getNavItems(userData.role));
       } catch (error) {
         console.error("Error fetching user data:", error);
+        window.location.href = "/pages/login"; // إعادة التوجيه إلى صفحة تسجيل الدخول في حالة الخطأ
       }
     }
 
     fetchUser();
-  }, []);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setUser(parsedUser);
-      setNavItems(getNavItems(parsedUser.role)); // Dynamically set navItems based on role
-    }
   }, []);
 
   const profileMenuItems = [
@@ -158,7 +143,7 @@ export default function header({ children }: { children?: React.ReactNode }) {
               ) : (
                 <svg
                   className={styles.iconButton}
-                  width="30"
+                  width="22"
                   height="22"
                   viewBox="0 0 30 22"
                   fill="none"
@@ -182,36 +167,36 @@ export default function header({ children }: { children?: React.ReactNode }) {
               className={styles.avatarButton}
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
-                {user?.image ? (
+              {user?.image ? (
                 <img
                   src={user.image}
                   alt="User Avatar"
                   className={styles.avatarImage}
                   style={{
-                  width: "54px",
-                  height: "54px",
-                  objectFit: "cover",
-                  borderRadius: "50%",
+                    width: "54px",
+                    height: "54px",
+                    objectFit: "cover",
+                    borderRadius: "50%",
                   } as React.CSSProperties}
                 />
-                ) : (
+              ) : (
                 <span
                   style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "100%",
-                  height: "100%",
-                  fontSize: "1.5rem",
-                  fontWeight: "bold",
-                  color: "#fff",
-                  backgroundColor: "#1F6899",
-                  borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "100%",
+                    height: "100%",
+                    fontSize: "1.5rem",
+                    fontWeight: "bold",
+                    color: "#fff",
+                    backgroundColor: "#1F6899",
+                    borderRadius: "50%",
                   }}
                 >
                   {user?.username?.charAt(0).toUpperCase()}
                 </span>
-                )}
+              )}
             </motion.button>
             <motion.div
               className={`${styles.dropdownContent} ${
@@ -243,9 +228,9 @@ export default function header({ children }: { children?: React.ReactNode }) {
         >
           <nav>
             {navItems.map((item) => (
-              <Link href={`/pages/${item.id}`}><button key={item.id} className={styles.navButton}>
-                {item.title}
-              </button></Link>
+              <Link href={`/pages/${item.id}`} key={item.id}>
+                <button className={styles.navButton}>{item.title}</button>
+              </Link>
             ))}
           </nav>
         </motion.aside>

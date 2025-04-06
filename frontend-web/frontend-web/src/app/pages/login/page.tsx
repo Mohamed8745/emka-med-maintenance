@@ -3,40 +3,31 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "../../styles/SignupRegister.module.css";
+import { useAuth } from "@/app/context/AuthContext";
+import { login } from "@/app/services/authService";
 
 export default function Login() {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
   const [error, setError] = useState<string | null>(null);
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { setUser } = useAuth();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "email") setEmail(value);
+    if (name === "password") setPassword(value);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(null);
-
     try {
-      const response = await fetch("http://127.0.0.1:8000/login/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error("Échec de la connexion");
-      }
-
-      const data = await response.json();
-      localStorage.setItem("token", data.access);
-      localStorage.setItem("user", JSON.stringify({ username: data.username, image: data.image , role : data.role}));
-
-      router.push(`/pages/dashboard`);
+      const token = await login(email, password);
+      setUser({ token: token.access }); 
+      router.push('/pages/dashboard'); // بعد النجاح ننتقل إلى صفحة dashboard
     } catch (error) {
+      console.error('Login failed:', error);
       setError("Email ou mot de passe incorrect");
     }
   };

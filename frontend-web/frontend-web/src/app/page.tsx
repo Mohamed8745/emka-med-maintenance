@@ -1,8 +1,20 @@
+'use client';
+
 import React from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { useAuth } from './context/AuthContext';
+import { useRouter } from "next/navigation";
 
-export default function home() {
+export default function Home() {
+  const { user } = useAuth();
+  const router = useRouter();
+
+  if (user) {
+    router.push(`/pages/dashboard`);
+    return null; // Prevent rendering anything while redirecting
+  }
+
   return (
     <main className={styles.container}>
       {/* خلفية الصورة مع الـ Gradient */}

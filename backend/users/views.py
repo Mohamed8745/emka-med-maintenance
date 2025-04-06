@@ -1,7 +1,9 @@
+from django.forms import ValidationError
 from rest_framework import viewsets, permissions, status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view, permission_classes
 from django.contrib.auth import authenticate, login
 from .permissions import IsAdminOrCanViewSpecificUsers
 from .models import Utilisateur, Magasinier, Operateur, Administrateur, Responsable, Technicien,Company
@@ -99,32 +101,54 @@ class CompanyViewSet(viewsets.ModelViewSet):
     
 
 
+User = get_user_model()
 
-class LoginView(APIView):
+class LoginView(APIView): 
+    permission_classes = [permissions.AllowAny]
+
     def post(self, request):
         email = request.data.get("email")
         password = request.data.get("password")
+        
+        if not email or not password:
+            return Response({"detail": "Email and password are required"}, status=status.HTTP_400_BAD_REQUEST)
 
-        print("Received email:", email)
-
-        user = get_object_or_404(Utilisateur, email=email)
-
-        if not check_password(password, user.password):
-            print("Incorrect password")
-            return Response({"error": "كلمة المرور غير صحيحة"}, status=status.HTTP_401_UNAUTHORIZED)
-
+        try:
+            user = User.objects.get(email=email)
+            if not user.check_password(password):
+                raise ValidationError("Invalid password")
+        except User.DoesNotExist:
+            return Response({"detail": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+        
         refresh = RefreshToken.for_user(user)
+        access_token = str(refresh.access_token)
 
-        return Response({
-            "access": str(refresh.access_token),
-            "refresh": str(refresh),
-            "role": user.role,
-            "username": user.username,
-            "image": request.build_absolute_uri(user.image.url) if user.image else None
+        response = Response({
+            'access': access_token,
+            'refresh': str(refresh),
         })
 
+        # تخزين التوكنات في HTTP-only cookies
+        response.set_cookie(
+            key='access_token',
+            value=access_token,
+            httponly=True,
+            max_age=60 * 60,  # ساعة
+            secure=True,
+            samesite='None',
+        )
+        response.set_cookie(
+            key='refresh_token',
+            value=str(refresh),
+            httponly=True,
+            max_age=60 * 60 * 24 * 7,  # أسبوع
+            secure=True,
+            samesite='None', 
+        )
 
         return response
+
+
 class UserView(APIView):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [JWTAuthentication]
@@ -141,3 +165,35 @@ class UserView(APIView):
             "user": str(request.user)
         })
 
+# views.py
+class LogoutView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        response = Response({"detail": "Logged out successfully"}, status=status.HTTP_200_OK)
+        response.delete_cookie('access_token')  # حذف الكوكيز
+        return response
+
+class ProtectedView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({"detail": "This is a protected route"})
+    
+class StatusAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request):
+        
+        return Response({
+            "authenticated": True,
+            "user": {
+            "username": request.user.username,
+            "email": request.user.email,
+            "first_name": request.user.first_name,
+            "last_name": request.user.last_name,
+            "role": request.user.role,
+            "image": request.build_absolute_uri(request.user.image.url) if request.user.image else None
+            }
+        })
+    

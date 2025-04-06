@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Header from "../../components/header"
 import SearchBar from "../../components/searchbar";
+import ProtectedRoute from '../../components/auth/ProtectedRoute';
 
 const machines = [
     { id: 1, name: "آلة A", type: "هيدروليكية" },
@@ -25,9 +26,11 @@ const machines = [
 
     return(
         <>
+          <ProtectedRoute>
             <Header>
                 <SearchBar onSearch={(query) => console.log("بحث:", query)} />
             </Header>
+          </ProtectedRoute>
         </>
     )
 }

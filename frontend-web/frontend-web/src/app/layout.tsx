@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import "./globals.css";
+import { AuthProvider } from './context/AuthContext';
 
 interface LayoutProps {
   children: ReactNode;
@@ -19,7 +20,9 @@ export default function RootLayout({ children }: LayoutProps) {
         />
       </head>
       <body suppressHydrationWarning={true}>
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
