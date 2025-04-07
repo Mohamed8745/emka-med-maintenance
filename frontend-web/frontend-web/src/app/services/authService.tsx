@@ -29,13 +29,13 @@ export const logout = async () => {
     method: 'POST',
     credentials: 'include',
   });
+  localStorage.removeItem("user");
 };
 
 // جلب حالة المصادقة
 export const getAuthStatus = async () => {
   const token = getCookie("access_token");
-  console.log("Access Token:", token);
-
+  
   const response = await fetch('http://127.0.0.1:8000/api/status/', {
     method: 'GET',
     headers: {
@@ -44,10 +44,6 @@ export const getAuthStatus = async () => {
     },
     credentials: "include",
   });
-
-  if (!response.ok) {
-    throw new Error("غير مصرح به");
-  }
 
   const data = await response.json();
   return data.user || null;

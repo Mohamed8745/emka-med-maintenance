@@ -1,4 +1,6 @@
-"use client";
+
+
+export const dynamic = 'force-dynamic';
 
 import { ReactNode } from "react";
 import "./globals.css";

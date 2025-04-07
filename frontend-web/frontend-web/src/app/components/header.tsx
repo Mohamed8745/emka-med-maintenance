@@ -1,17 +1,21 @@
 "use client";
 
-import React, { JSX, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "./../styles/header.module.css";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { getUser, logout } from "../services/authService";
+import ProfileModal from "../components/ProfileModal";
+import SettingModal from "../components/SettingModal";
 import Link from "next/link";
-import { getUser } from "../services/authService"; // Import authService as a named export
 
 interface User {
   username: string;
   first_name: string;
   last_name: string;
   role: string;
+  email: string;
+  numidentif: string;
+  numtel: string;
   image: string | null;
 }
 
@@ -55,32 +59,20 @@ const getNavItems = (role: string) => {
   }
 };
 
-const fetchUserData = async () => {
-  try {
-    const user = await getUser();
-    if (user) {
-      console.log("User:", user);
-    } else {
-      console.log("User not authenticated");
-    }
-  } catch (error) {
-    console.error("Error fetching user data:", error);
-  }
-};
-
-export default function header({ children }: { children?: React.ReactNode }) {
+export default function Header({ children }: { children?: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [navItems, setNavItems] = useState<{ title: string; id: string }[]>([]);
+  const [showProfile, setShowProfile] = useState(false);
+  const [showSetting, setShowSetting] = useState(false);
 
   useEffect(() => {
     async function fetchUser() {
       try {
-        const userData = await getUser(); // استخدام authService لجلب بيانات المستخدم
+        const userData = await getUser();
         if (!userData) {
-          console.error("User not found. Redirecting to login...");
-          window.location.href = "/pages/login"; // إعادة التوجيه إلى صفحة تسجيل الدخول
+          window.location.href = "/pages/login";
           return;
         }
 
@@ -88,12 +80,31 @@ export default function header({ children }: { children?: React.ReactNode }) {
         setNavItems(getNavItems(userData.role));
       } catch (error) {
         console.error("Error fetching user data:", error);
-        window.location.href = "/pages/login"; // إعادة التوجيه إلى صفحة تسجيل الدخول في حالة الخطأ
+        window.location.href = "/pages/login";
       }
     }
 
     fetchUser();
   }, []);
+
+  const handleMenuClick = async (id: string) => {
+    switch (id) {
+      case "profile":
+        setShowProfile(true);
+        break;
+      case "setting":
+        setShowSetting(true);
+        break;
+      case "logout":
+        await logout();
+        window.location.replace("/pages/login");
+        break;
+      default:
+        break;
+    }
+
+    setIsDropdownOpen(false);
+  };
 
   const profileMenuItems = [
     { title: user?.username || "Guest", id: "username" },
@@ -101,11 +112,6 @@ export default function header({ children }: { children?: React.ReactNode }) {
     { title: "Setting", id: "setting" },
     { title: "Log out", id: "logout" },
   ];
-
-  const scaleX: number = 0.707108;
-  const scaleY: number = 0.707105;
-  const translateX: number = 0;
-  const translateY: number = 19.864;
 
   return (
     <div className={styles.container}>
@@ -116,50 +122,33 @@ export default function header({ children }: { children?: React.ReactNode }) {
               className={styles.iconButton}
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
+              {/* Burger/Menu Icon */}
               {isSidebarOpen ? (
-                <svg
-                  className={styles.iconButton}
-                  width="22"
-                  height="22"
-                  viewBox="0 0 22 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
                   <rect
                     width="28.092"
                     height="3.02079"
                     rx="1.5104"
-                    transform={`matrix(${scaleX} ${-scaleY} ${scaleX} ${scaleY} ${translateX} ${translateY})`}
+                    transform="matrix(0.707108 -0.707105 0.707108 0.707105 0 19.864)"
                     fill="#1F6899"
                   />
                   <rect
                     width="28.092"
                     height="3.02079"
                     rx="1.5104"
-                    transform="matrix(0.707108 0.707106 -0.707107 0.707106 2.13623 -3.8147e-06)"
+                    transform="matrix(0.707108 0.707106 -0.707107 0.707106 2.13623 0)"
                     fill="#1F6899"
                   />
                 </svg>
               ) : (
-                <svg
-                  className={styles.iconButton}
-                  width="22"
-                  height="22"
-                  viewBox="0 0 30 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="22" height="22" viewBox="0 0 30 22" fill="none">
                   <rect width="30" height="6" rx="3" fill="#1F6899" />
                   <rect y="8" width="30" height="6" rx="3" fill="#1F6899" />
                   <rect y="16" width="30" height="6" rx="3" fill="#1F6899" />
                 </svg>
               )}
             </motion.button>
-            <img
-              className={styles.logo}
-              alt="Asset"
-              src="/../images/logo1.svg"
-            />
+            <img className={styles.logo} alt="logo" src="/../images/logo1.svg" />
           </div>
           {children}
           <div className={styles.profileMenu}>
@@ -180,20 +169,7 @@ export default function header({ children }: { children?: React.ReactNode }) {
                   } as React.CSSProperties}
                 />
               ) : (
-                <span
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "100%",
-                    height: "100%",
-                    fontSize: "1.5rem",
-                    fontWeight: "bold",
-                    color: "#fff",
-                    backgroundColor: "#1F6899",
-                    borderRadius: "50%",
-                  }}
-                >
+                <span className={styles.avatarFallback}>
                   {user?.username?.charAt(0).toUpperCase()}
                 </span>
               )}
@@ -210,7 +186,11 @@ export default function header({ children }: { children?: React.ReactNode }) {
               transition={{ duration: 0.3 }}
             >
               {profileMenuItems.map((item) => (
-                <div key={item.id} className={styles.dropdownItem}>
+                <div
+                  key={item.id}
+                  className={styles.dropdownItem}
+                  onClick={() => handleMenuClick(item.id)}
+                >
                   {item.title}
                 </div>
               ))}
@@ -224,7 +204,7 @@ export default function header({ children }: { children?: React.ReactNode }) {
           }`}
           initial={{ x: -400 }}
           animate={{ x: isSidebarOpen ? 0 : -400 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.5 }}
         >
           <nav>
             {navItems.map((item) => (
@@ -234,6 +214,18 @@ export default function header({ children }: { children?: React.ReactNode }) {
             ))}
           </nav>
         </motion.aside>
+
+        {showProfile && user && (
+          <ProfileModal 
+            user={user} 
+            onClose={() => setShowProfile(false)} 
+            onSave={(updatedUser) => {
+              setUser(updatedUser);
+              setShowProfile(false);
+            }} 
+          />
+        )}
+        {showSetting && <SettingModal onClose={() => setShowSetting(false)} />}
       </div>
     </div>
   );

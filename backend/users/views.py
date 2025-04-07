@@ -193,6 +193,8 @@ class StatusAPIView(APIView):
             "first_name": request.user.first_name,
             "last_name": request.user.last_name,
             "role": request.user.role,
+            "numidentif" : request.user.numidentif,
+            "numtel" : request.user.numtel,
             "image": request.build_absolute_uri(request.user.image.url) if request.user.image else None
             }
         })
