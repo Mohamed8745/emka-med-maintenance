@@ -1,15 +1,17 @@
-// src/pages/_app.tsx
 'use client';
 
-import '../styles/globals.css';
+import { appWithTranslation } from 'next-i18next';
+import { ReactNode } from 'react';
 import { AuthProvider } from '../context/AuthContext';
+import ThemeInitializer from '../components/ThemeInitializer';
 
-function MyApp({ Component, pageProps }: any) {
+function MyApp({ Component, pageProps }: { Component: React.ComponentType, pageProps: any }) {
   return (
     <AuthProvider>
+      <ThemeInitializer />
       <Component {...pageProps} />
     </AuthProvider>
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

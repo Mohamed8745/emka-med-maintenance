@@ -5,10 +5,12 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import { useAuth } from './context/AuthContext';
 import { useRouter } from "next/navigation";
+import { useTranslation } from "next-i18next"; // استيراد الترجمة
 
 export default function Home() {
   const { user } = useAuth();
   const router = useRouter();
+  const { t } = useTranslation("common"); // استخدام الترجمة من ملف common.json
 
   if (user) {
     router.push(`/pages/dashboard`);
@@ -24,19 +26,26 @@ export default function Home() {
 
       {/* المحتوى */}
       <div className={styles.content}>
-        <header className={styles.logo}><img src="/images/logo.svg" alt="" /></header>
+        <header className={styles.logo}>
+          <img src="/images/logo.svg" alt={t("home.logo_alt")} /> {/* ترجمة النص البديل للصورة */}
+        </header>
         <h1 className={styles.title}>
-          Bienvenue dans notre système intelligent de gestion de maintenance !
+          {t("home.title")} {/* ترجمة العنوان */}
         </h1>
         <p className={styles.description}>
-          Optimisez l'efficacité de vos équipements avec l'IA : anticipez les
-          pannes, réduisez les arrêts imprévus et assurez une maintenance
-          préventive. Suivez les opérations en temps réel et prenez des
-          décisions précises via une plateforme intuitive.🔧💡
+          {t("home.description")} {/* ترجمة الوصف */}
         </p>
         <div className={styles.buttons}>
-          <Link href="./pages/login"><button className={`${styles.btn} ${styles.btnDark}`}>Log in</button></Link>
-          <Link href="./pages/signupRole"><button className={`${styles.btn} ${styles.btnLight}`}>Sign up</button></Link>
+          <Link href="./pages/login">
+            <button className={`${styles.btn} ${styles.btnDark}`}>
+              {t("home.login")} {/* ترجمة زر تسجيل الدخول */}
+            </button>
+          </Link>
+          <Link href="./pages/signupRole">
+            <button className={`${styles.btn} ${styles.btnLight}`}>
+              {t("home.signup")} {/* ترجمة زر التسجيل */}
+            </button>
+          </Link>
         </div>
       </div>
     </main>

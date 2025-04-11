@@ -1,0 +1,96 @@
+{
+    "home": {
+      "logo_alt": "Company Logo",
+      "title": "Welcome to our intelligent maintenance management system!",
+      "description": "Optimize your equipment efficiency with AI: anticipate failures, reduce unexpected downtime and ensure preventive maintenance. Track operations in real time and make precise decisions through an intuitive platform.🔧💡",
+      "login": "Log in",
+      "signup": "Sign up"
+    },
+    "login": {
+      "email": "Email",
+      "password": "Password",
+      "submit": "Login",
+      "error": "Incorrect email or password"
+    },
+    "signup": {
+      "first_name": "First name",
+      "last_name": "Last name",
+      "numidentif": "ID card",
+      "numtel": "Phone number",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "choose_photo": "Choose a photo",
+      "submit": "Sign up",
+      "error": {
+        "password_mismatch": "Passwords do not match",
+        "role_required": "Please select user role"
+      }
+    },
+    "role_selection": {
+      "logo_alt": "Company Logo",
+      "select_role_title": "Select Your Role",
+      "role_magasinier": "Storekeeper",
+      "role_technicien": "Technician",
+      "role_responsable": "Manager",
+      "role_operateur": "Operator"
+    },
+    "profile": {
+      "profile_user": "Profile User",
+      "user_avatar": "User Avatar",
+      "edit": "Edit",
+      "username": "Username",
+      "role": "Role",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "num_identif": "Identification Number",
+      "num_tel": "Phone Number",
+      "save": "Save"
+    },
+    "settings": {
+      "title": "App Settings",
+      "theme": "Theme",
+      "theme_options": {
+        "light": "☀️ Light",
+        "dark": "🌙 Dark",
+        "system": "🖥️ System"
+      },
+      "language": "Language",
+      "language_options": {
+        "ar": "🇸🇦 Arabic",
+        "fr": "🇫🇷 French",
+        "en": "🇬🇧 English"
+      }
+    },
+    "stock": {
+      "title": "Stock List",
+      "id": "Stock ID",
+      "capacity": "Capacity",
+      "location": "Location",
+      "pieces": "Pieces",
+      "actions": "Actions",
+      "edit": "Edit",
+      "delete": "Delete",
+      "add": "Add",
+      "save": "Save",
+      "cancel": "Cancel",
+      "confirm_delete": "Are you sure?",
+      "delete_confirmation": "Do you really want to delete this stock?"
+    },
+    "header" :{
+      "dashboard": "Dashboard",
+      "machine": "Machine",
+      "maintenance": "Maintenance",
+      "stock": "Stock",
+      "rapport": "Report",
+      "users": "Users",
+      "guest": "Guest",
+      "profile": "Profile",
+      "setting": "Settings",
+      "logout": "Logout"
+    },
+    "searchbar":{
+      "search_placeholder": "Search..."
+    }
+  }

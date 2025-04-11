@@ -1,13 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "../../styles/SignupRegister.module.css";
+import { useTranslation } from "next-i18next"; // استيراد الترجمة
 
 export default function SignupRegister() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialRole = searchParams.get("role") || "";
+
+  const { t } = useTranslation("common"); // استخدام الترجمة من ملف common.json
 
   const [formData, setFormData] = useState({
     first_name: "",
@@ -38,12 +41,12 @@ export default function SignupRegister() {
     setError(null);
 
     if (!formData.role) {
-      setError("يرجى اختيار دور المستخدم");
+      setError(t("signup.error.role_required")); // ترجمة رسالة الخطأ
       return;
     }
 
     if (formData.password !== formData.confirmPassword) {
-      setError("كلمتا المرور غير متطابقتان");
+      setError(t("signup.error.password_mismatch")); // ترجمة رسالة الخطأ
       return;
     }
 
@@ -71,12 +74,12 @@ export default function SignupRegister() {
 
       if (!response.ok) {
         console.log("❌ خطأ في الاستجابة:", response.statusText);
-        throw new Error("فشل في التسجيل");
+        throw new Error(t("signup_failed")); // ترجمة رسالة الخطأ
       }
 
       router.push("/pages/login");
     } catch (error) {
-      setError("حدث خطأ أثناء التسجيل");
+      setError(t("signup_error")); // ترجمة رسالة الخطأ
     }
   };
 
@@ -87,26 +90,81 @@ export default function SignupRegister() {
           <div className={styles.overlay}></div>
 
           <header className={styles.logo}>
-            <img src="/images/logo.svg" alt="Logo" width="193.1" height="82" />
+            <img src="/images/logo.svg" alt={t("home.logo_alt")} width="193.1" height="82" /> {/* ترجمة النص البديل للصورة */}
           </header>
 
           <div className={styles.formContainer}>
-            {/*<h2 className={styles.h2}>Inscrivez-vous</h2>*/}
             {error && <p className={styles.error}>{error}</p>}
             <form onSubmit={handleSubmit} className={styles.form}>
-              <input type="text" name="first_name" placeholder="Nom" className={styles.inputField} onChange={handleChange} required />
-              <input type="text" name="last_name" placeholder="Prenom" className={styles.inputField} onChange={handleChange} required />
-              <input type="text" name="numidentif" placeholder="Carte d'identité" className={styles.inputField} onChange={handleChange} required />
-              <input type="text" name="numtel" placeholder="Numéro de téléphone" className={styles.inputField} onChange={handleChange} required />
-              <input type="email" name="email" placeholder="Email" className={styles.inputField} onChange={handleChange} required />
-              <input type="password" name="password" placeholder="Mot de passe" className={styles.inputField} onChange={handleChange} required />
-              <input type="password" name="confirmPassword" placeholder="Confirmez le mot de passe" className={styles.inputField} onChange={handleChange} required />
+              <input
+                type="text"
+                name="first_name"
+                placeholder={t("signup.first_name")} // ترجمة النص داخل الحقل
+                className={styles.inputField}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="text"
+                name="last_name"
+                placeholder={t("signup.last_name")} // ترجمة النص داخل الحقل
+                className={styles.inputField}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="text"
+                name="numidentif"
+                placeholder={t("signup.numidentif")} // ترجمة النص داخل الحقل
+                className={styles.inputField}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="text"
+                name="numtel"
+                placeholder={t("signup.numtel")} // ترجمة النص داخل الحقل
+                className={styles.inputField}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder={t("signup.email")} // ترجمة النص داخل الحقل
+                className={styles.inputField}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder={t("signup.password")} // ترجمة النص داخل الحقل
+                className={styles.inputField}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder={t("signup.confirmPassword")} // ترجمة النص داخل الحقل
+                className={styles.inputField}
+                onChange={handleChange}
+                required
+              />
               <div className={styles.file}>
-                choisir une photo
-                <input type="file" className={styles.img} />
+                {t("signup.choose_photo")} {/* ترجمة النص */}
+                <input
+                  type="file"
+                  name="image"
+                  className={styles.img}
+                  onChange={handleChange}
+                />
               </div>
 
-              <button type="submit" className={styles.submitButton}>Sign up</button>
+              <button type="submit" className={styles.submitButton}>
+                {t("signup.submit")} {/* ترجمة زر التسجيل */}
+              </button>
             </form>
           </div>
         </div>

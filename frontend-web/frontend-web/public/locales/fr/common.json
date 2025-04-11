@@ -1,0 +1,96 @@
+{
+    "home": {
+      "logo_alt": "Logo de l'entreprise",
+      "title": "Bienvenue dans notre système intelligent de gestion de maintenance !",
+      "description": "Optimisez l'efficacité de vos équipements avec l'IA : anticipez les pannes, réduisez les arrêts imprévus et assurez une maintenance préventive. Suivez les opérations en temps réel et prenez des décisions précises via une plateforme intuitive.🔧💡",
+      "login": "Se connecter",
+      "signup": "S'inscrire"
+    },
+    "login": {
+      "email": "Email",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "error": "Email ou mot de passe incorrect"
+    },
+    "signup": {
+      "first_name": "Nom",
+      "last_name": "Prénom",
+      "numidentif": "Carte d'identité",
+      "numtel": "Numéro de téléphone",
+      "email": "Email",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmez le mot de passe",
+      "choose_photo": "choisir une photo",
+      "submit": "S'inscrire",
+      "error": {
+        "password_mismatch": "Les mots de passe ne correspondent pas",
+        "role_required": "Veuillez sélectionner un rôle"
+      }
+    },
+    "role_selection": {
+      "logo_alt": "Logo de l'entreprise",
+      "select_role_title": "Sélectionnez votre rôle",
+      "role_magasinier": "Magasinier",
+      "role_technicien": "Technicien",
+      "role_responsable": "Responsable",
+      "role_operateur": "Opérateur"
+    },
+    "profile": {
+      "profile_user": "Profil utilisateur",
+      "user_avatar": "Avatar de l'utilisateur",
+      "edit": "Modifier",
+      "username": "Nom d'utilisateur",
+      "role": "Rôle",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "email": "Email",
+      "num_identif": "Numéro d'identification",
+      "num_tel": "Numéro de téléphone",
+      "save": "Enregistrer"
+    },
+    "settings": {
+      "title": "Paramètres de l'application",
+      "theme": "Thème",
+      "theme_options": {
+        "light": "☀️ Clair",
+        "dark": "🌙 Sombre",
+        "system": "🖥️ Système"
+      },
+      "language": "Langue",
+      "language_options": {
+        "ar": "🇸🇦 Arabe",
+        "fr": "🇫🇷 Français",
+        "en": "🇬🇧 Anglais"
+      }
+    },
+    "stock": {
+      "title": "Liste des Stocks",
+      "id": "ID du Stock",
+      "capacity": "Capacité",
+      "location": "Emplacement",
+      "pieces": "Pièces",
+      "actions": "Actions",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "add": "Ajouter",
+      "save": "Enregistrer",
+      "cancel": "Annuler",
+      "confirm_delete": "Êtes-vous sûr ?",
+      "delete_confirmation": "Voulez-vous vraiment supprimer ce stock ?"
+    },
+    "header" :{
+      "dashboard": "Tableau de bord",
+      "machine": "Machine",
+      "maintenance": "Maintenance",
+      "stock": "Stock",
+      "rapport": "Rapport",
+      "users": "Utilisateurs",
+      "guest": "Invité",
+      "profile": "Profil",
+      "setting": "Paramètres",
+      "logout": "Déconnexion"
+    },
+    "searchbar":{
+      "search_placeholder": "Rechercher..."
+    }
+  }

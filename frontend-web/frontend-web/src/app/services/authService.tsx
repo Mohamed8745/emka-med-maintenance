@@ -34,13 +34,11 @@ export const logout = async () => {
 
 // جلب حالة المصادقة
 export const getAuthStatus = async () => {
-  const token = getCookie("access_token");
   
   const response = await fetch('http://127.0.0.1:8000/api/status/', {
     method: 'GET',
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     credentials: "include",
   });
@@ -60,3 +58,64 @@ export const getUser = async () => {
     return null; // إذا حدث خطأ، أعد null
   }
 };
+
+
+interface User {
+  id: number;
+  // Add other properties of the user object as needed
+}
+
+export async function updateUser(updatedUser: User, formData: FormData) {
+  try {
+    const response = await fetch(`http://127.0.0.1:8000/utilisateurs/${updatedUser.id}/`, {
+      method: "PUT",
+      credentials: "include",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.log("Server error:", errorText);
+      throw new Error("Failed to update user");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error updating user:", error);
+    throw error;
+  }
+}
+
+import axios from "axios";
+
+const API = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/",
+  withCredentials: true, // يدعم الـ JWT في HttpOnly cookies
+});
+
+const authService = {
+  getStocks: async () => {
+    try {
+      const res = await API.get("/stocks/");
+      return res.data;
+    } catch (err) {
+      console.error("فشل في جلب المخازن", err);
+      return null;
+    }
+  },
+
+  addStock: async (data: Record<string, any>) => {
+    try {
+      const res = await API.post("/stocks/", data);
+      return res.data;
+    } catch (err) {
+      console.error("فشل في إضافة المخزن", err);
+      return null;
+    }
+  },
+
+  // يمكن إضافة خدمات أخرى لاحقًا
+};
+
+export default authService;
