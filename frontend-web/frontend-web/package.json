@@ -13,7 +13,8 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@types/react": "^19.0.12",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "axios": "^1.8.4",
     "framer-motion": "^12.6.2",
     "i18next": "^24.2.3",
@@ -32,6 +33,7 @@
     "@types/i18next-browser-languagedetector": "^2.0.2",
     "@types/leaflet": "^1.9.17",
     "@types/node": "22.13.11",
+    "@types/react": "^19.1.2",
     "css-modules-typescript-loader": "^4.0.1",
     "typescript": "5.8.2"
   }

@@ -92,5 +92,53 @@
     },
     "searchbar":{
       "search_placeholder": "بحث..."
+    },
+    "warehouse":{
+      "stock": "المخزن",
+      "quantity_total": "الكمية الإجمالية",
+      "quantity_used": "الكمية المستخدمة",
+      "unused_quantity": "الكمية الحرة",
+      "add_button": "إضافة مخزن جديد",
+      "edit_title": "تعديل",
+      "delete_title": "حذف",
+      "delete_confirm": "هل أنت متأكد أنك تريد حذف هذا المخزن؟",
+      "delete_button": "حذف",
+      "cancel_button": "إلغاء"
+    },
+    "add_store_modal": {
+      "title": "إضافة مخزن",
+      "store_name": "اسم المخزن",
+      "store_content": "محتوى المخزن",
+      "quantity_total": "الكمية الإجمالية",
+      "add_button": "إضافة",
+      "cancel_button": "إلغاء",
+      "error_failed": "فشل في إضافة المخزن",
+      "error_occurred": "حدث خطأ أثناء إضافة المخزن"
+    },
+    "edit_store_modal": {
+      "title": "تعديل المخزن",
+      "store_name": "اسم المخزن",
+      "store_content": "محتوى المخزن",
+      "quantity_total": "الكمية الإجمالية",
+      "quantity_used": "الكمية المستخدمة",
+      "quantity_free": "الكمية الحرة",
+      "save_button": "حفظ",
+      "cancel_button": "إلغاء",
+      "error_failed": "فشل في تحديث المخزن",
+      "error_occurred": "حدث خطأ أثناء تحديث المخزن"
+    },
+    "delete_store_modal": {
+      "title": "تحذير!!!",
+      "confirm_message": "هل أنت متأكد من حذف هذا المخزن؟",
+      "warning_message": "تأكد من أن قرارك صحيح لأنك ستفقد جميع المعلومات المخزنة في المخزن إلى الأبد،",
+      "confirm_prompt": "هل أنت متأكد؟ إذا كنت متأكدًا،",
+      "type_instruction": "اكتب اسم المخزن أربع مرات في الحقل",
+      "space_note": "(مفصولة بمسافات)",
+      "placeholder": "مثال: اسم_المخزن اسم_المخزن اسم_المخزن اسم_المخزن",
+      "delete_button": "حذف",
+      "delete_loading": "جارٍ الحذف...",
+      "cancel_button": "إلغاء",
+      "input_title": "اكتب الاسم بالضبط 4 مرات مفصولة بمسافات",
+      "error_failed": "فشل في حذف المخزن. حاول مرة أخرى."
     }
   }

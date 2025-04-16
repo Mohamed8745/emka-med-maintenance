@@ -169,6 +169,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
                     width: "54px",
                     height: "54px",
                     objectFit: "cover",
+                    objectPosition: "center",
                     borderRadius: "50%",
                   } as React.CSSProperties}
                 />

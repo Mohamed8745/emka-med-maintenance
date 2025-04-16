@@ -69,6 +69,19 @@ class UtilisateurViewSet(viewsets.ModelViewSet):
         user.set_password(data["password"])  # تشفير كلمة المرور
         user.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    def update(self, request, *args, **kwargs):
+        # نتحقق من أن المستخدم هو نفسه أو أنه إداري
+        instance = self.get_object()
+        if request.user != instance and not request.user.is_admin:
+            return Response({'detail': 'Not authorized to update this user'}, status=status.HTTP_403_FORBIDDEN)
+
+        # إذا كانت الطلب هو PUT أو PATCH، نقوم بتحديث البيانات باستخدام الـ serializer
+        serializer = self.get_serializer(instance, data=request.data, partial=True)  # نستخدم partial=True لتحديث الحقول المحددة فقط
+        if serializer.is_valid():
+            serializer.save()  # حفظ التعديلات
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class MagasinierViewSet(viewsets.ModelViewSet):
     queryset = Magasinier.objects.all()
     serializer_class = MagasinierSerializer
@@ -188,14 +201,15 @@ class StatusAPIView(APIView):
         return Response({
             "authenticated": True,
             "user": {
-            "username": request.user.username,
-            "email": request.user.email,
-            "first_name": request.user.first_name,
-            "last_name": request.user.last_name,
-            "role": request.user.role,
-            "numidentif" : request.user.numidentif,
-            "numtel" : request.user.numtel,
-            "image": request.build_absolute_uri(request.user.image.url) if request.user.image else None
+                "id" : request.user.id,
+                "username": request.user.username,
+                "email": request.user.email,
+                "first_name": request.user.first_name,
+                "last_name": request.user.last_name,
+                "role": request.user.role,
+                "numidentif" : request.user.numidentif,
+                "numtel" : request.user.numtel,
+                "image": request.build_absolute_uri(request.user.image.url) if request.user.image else None
             }
         })
     

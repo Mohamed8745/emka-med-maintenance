@@ -3,32 +3,43 @@ from users.models import Magasinier, Operateur, Technicien
 
 class IsAdminOrCanViewSpecificUsers(permissions.BasePermission):
     """
-    - أي شخص (حتى الزوار) يمكنهم إضافة مستخدم جديد.
-    - Administrateur لديه جميع الصلاحيات.
-    - Responsable يمكنه رؤية (Magasinier, Operateur, Technicien) فقط.
-    - كل مستخدم يمكنه رؤية بياناته الشخصية وتعديلها.
+    صلاحيات الوصول:
+    - أي شخص (حتى الزوار) يمكنه إنشاء مستخدم (POST).
+    - المستخدمون المسجلون:
+        * admin: له جميع الصلاحيات.
+        * responsable: يمكنه رؤية Magasinier, Operateur, Technicien.
+        * المستخدم العادي: يمكنه رؤية أو تعديل بياناته فقط.
     """
 
     def has_permission(self, request, view):
+        # السماح للجميع (حتى غير المسجلين) بإنشاء حساب جديد
         if request.method == "POST":
-            return True  # السماح لأي شخص بإنشاء مستخدم جديد
+            return True
 
+        # رفض الطلبات الأخرى للمستخدمين غير المصادق عليهم
         if not request.user.is_authenticated:
-            return False  # رفض الوصول للمستخدم غير المصادق في العمليات الأخرى
+            return False
 
+        # admin له كامل الصلاحيات
         if request.user.is_admin:
-            return True  # Admin لديه جميع الصلاحيات
+            return True
 
+        # السماح لجميع المستخدمين بالطلبات الآمنة مثل GET وOPTIONS
         if request.method in permissions.SAFE_METHODS:
-            return True  # السماح بالطلبات الآمنة (GET, HEAD, OPTIONS) للجميع
+            return True
 
-        return False  # رفض أي تعديل أو حذف للمستخدمين غير الإداريين
+        # السماح للمستخدم المصادق عليه بمتابعة الطلب
+        # (سيتم التحقق من الصلاحية الحقيقية في has_object_permission)
+        return True
 
     def has_object_permission(self, request, view, obj):
+        # admin له كامل الصلاحيات
         if request.user.is_admin:
-            return True  # Admin لديه جميع الصلاحيات
+            return True
 
-        if request.user.is_responsable and isinstance(obj, (Magasinier, Operateur, Technicien)):
-            return True  # Responsable يمكنه رؤية Magasinier, Operateur, Technicien فقط
+        # responsable يمكنه رؤية مستخدمين معينين فقط
+        if request.user.is_responsable and request.method in permissions.SAFE_METHODS:
+            return isinstance(obj, (Magasinier, Operateur, Technicien))
 
-        return obj == request.user  # السماح للمستخدم برؤية بياناته فقط
+        # السماح للمستخدم فقط بالوصول إلى وتعديل بياناته الشخصية
+        return obj == request.user

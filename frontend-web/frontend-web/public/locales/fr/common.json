@@ -92,5 +92,54 @@
     },
     "searchbar":{
       "search_placeholder": "Rechercher..."
+    },
+    "warehouse": {
+      "stock": "Stock",
+      "quantity_total": "Quantité totale",
+      "quantity_used": "Quantité utilisée",
+      "unused_quantity": "Quantité libre",
+      "add_button": "Ajouter un nouvel entrepôt",
+      "edit_title": "Modifier",
+      "delete_title": "Supprimer",
+      "delete_confirm": "Êtes-vous sûr de vouloir supprimer cet entrepôt?",
+      "delete_button": "Supprimer",
+      "cancel_button": "Annuler"
+    },
+    "add_store_modal": {
+      "title": "Ajouter un magasin",
+      "store_name": "Nom du magasin",
+      "store_content": "Contenu du magasin",
+      "quantity_total": "Quantité totale",
+      "add_button": "Ajouter",
+      "cancel_button": "Annuler",
+      "error_failed": "Échec de l'ajout du magasin",
+      "error_occurred": "Une erreur s'est produite lors de l'ajout du magasin"
+    },
+    "edit_store_modal": {
+        "title": "Modifier le magasin",
+        "store_name": "Nom du magasin",
+        "store_content": "Contenu du magasin",
+        "quantity_total": "Quantité totale",
+        "quantity_used": "Quantité utilisée",
+        "quantity_free": "Quantité libre",
+        "save_button": "Enregistrer",
+        "cancel_button": "Annuler",
+        "success_message": "Magasin mis à jour avec succès",
+        "error_failed": "Échec de la mise à jour du magasin",
+        "error_occurred": "Une erreur s'est produite lors de la mise à jour du magasin"
+    },
+    "delete_store_modal": {
+      "title": "Attention !!!",
+      "confirm_message": "Êtes-vous sûr de vouloir supprimer ce magasin ?",
+      "warning_message": "Assurez-vous que votre décision est correcte car vous perdrez définitivement toutes les informations stockées dans le magasin,",
+      "confirm_prompt": "êtes-vous sûr ? Si vous êtes sûr,",
+      "type_instruction": "tapez le nom du magasin quatre fois dans le champ",
+      "space_note": "(séparés par des espaces)",
+      "placeholder": "ex. : nomMagasin nomMagasin nomMagasin nomMagasin",
+      "delete_button": "Supprimer",
+      "delete_loading": "Suppression en cours...",
+      "cancel_button": "Annuler",
+      "input_title": "Tapez le nom exactement 4 fois, séparé par des espaces",
+      "error_failed": "Échec de la suppression du magasin. Réessayez."
     }
   }

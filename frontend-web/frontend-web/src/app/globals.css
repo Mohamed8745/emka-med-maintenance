@@ -1,46 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+
 html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: 'Segoe UI', sans-serif;
 }
 
 :root {
   --bg-color: #141414;
   --bg1-color: #1A1A1A;
+  --bg1h-color: #2b2b2b;
   --bg2-color: #D1D1D1;
   --bg2h-color: #9b9b9b;
   --text-color: #ffffff;
-  --text2-color: #ffffff;
+  --text1-color: #ffffff;
+  --text2-color: #9b9b9b;
   --background-color: #1e1e1e;
   --text3-color: #eee;
   --primary-color: #0a84ff;
+  
 }
 
 [data-theme="dark"] {
   --bg-color: #141414;
   --bg1-color: #1A1A1A;
+  --bg1h-color: #2b2b2b;
   --bg2-color: #D1D1D1;
   --bg2h-color: #9b9b9b;
+  --bg3-color: #232323;
+  --bg3h-color: #363636;
   --text-color: #ffffff;
   --text1-color: #ffffff;
+  --text2-color: #9b9b9b;
   --background-color: #1e1e1e;
   --text3-color: #eee;
   --primary-color: #0a84ff;
+  --card-bg: #1A1A1A;
+  
+  
 }
 
 [data-theme="light"] {
   --bg-color: #ffffff;
   --bg1-color: #D9D9D9;
+  --bg1h-color: #c7c7c7;
   --bg2-color: #1F6899;
   --bg2h-color: #13415f;
+  --bg3-color: #989898;
+  --bg3h-color: #6f6f6f;
   --text-color: #1F6899;
   --text1-color: #ffffff;
+  --text2-color: #1F6899;
   --background-color: #ffffff;
   --text3-color: #222;
-  --primary-color: #0a84ff;
+  --primary-color: #0a84ff;;
+  --card-bg: #1F6899;
+  
+  
 }
 
 

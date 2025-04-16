@@ -9,6 +9,8 @@ class PieceDeRechangeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class StockSerializer(serializers.ModelSerializer):
+    capacite_utilisee = serializers.ReadOnlyField()
+    capacite_libre = serializers.ReadOnlyField()
     class Meta:
         model = Stock
         fields = '__all__'

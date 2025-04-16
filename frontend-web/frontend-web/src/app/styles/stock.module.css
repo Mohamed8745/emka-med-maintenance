@@ -1,51 +1,176 @@
-/* تنسيق خريطة المخزون */
-.map-container {
-  position: relative;
-  height: 500px;
+/* warehouse.module.css */
+
+/* الحاوية الأساسية */
+.warehouseContainer {
   width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-body[data-theme='dark'] .map-container {
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-}
-
-/* تخصيص المؤشرات */
-.marker {
-  cursor: pointer;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background-color: var(--light-primary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.marker:hover {
-  background-color: var(--dark-primary);
-}
-
-body[data-theme='dark'] .marker {
-  background-color: var(--dark-primary);
-}
-
-body[data-theme='dark'] .marker:hover {
-  background-color: var(--light-primary);
-}
-
-/* نص النافذة المنبثقة (popup) */
-.popup-message {
-  font-size: 14px;
-  padding: 10px;
-  background-color: var(--light-bg);
+  max-width: 1495px;
+  margin: 80px auto;
+  padding: 16px;
+  overflow-x: hidden;
   border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-body[data-theme='dark'] .popup-message {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
+/* التمرير الأفقي مع أنيميشن */
+.warehouseScroll {
+  display: flex;
+  flex-direction: column; /* ✅ رأسي */
+  gap: 22px;
+  scroll-behavior: smooth;
+  padding-right: 10px;
+  overflow-y: auto;  /* ✅ ضروري للتمرير الرأسي */
+   /* أو أي ارتفاع حسب التصميم */
+}
+
+
+
+.warehouseScroll::-webkit-scrollbar {
+  height: 8px;
+}
+.warehouseScroll::-webkit-scrollbar-thumb {
+  background-color: var(--bg1-color);
+  border-radius: 4px;
+}
+.warehouseScroll::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* البطاقة */
+.warehouseCard {
+  position: relative;
+  width: 100%;
+  min-width: 1400px;
+  height: 440px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--bg2-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  margin-bottom: 20px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.warehouseCard:hover {
+  transform: scale(1.01);
+}
+
+.observe-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.observe-card.animate {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+
+
+/* خلفية الصورة */
+.warehouseBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.overlay {
+  height: 100%;
+  inset: 0;
+  background-color: var(--card-bg);
+  opacity: 0.55;
+  z-index: 01;
+  /*pointer-events: none;  ❗ مهم جدًا */
+}
+
+/* محتوى البطاقة */
+.warehouseContent {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 0;
+  font-family: "Jua", sans-serif;
+}
+
+.section {
+  position: absolute;
+  top: 46px;
+  color: var(--text4-color);
+  text-align: center;
+}
+
+.label {
+  font-size: 40px ;
+  font-weight: normal;
+  color: white;
+}
+
+.value {
+  margin-top: 75px;
+  font-size: 80px;
+  font-weight: normal;
+  color: white;
+}
+
+/* العنوان في الأسفل */
+.title {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  font-weight: normal;
+  color: white;
+}
+
+/* الأزرار العائمة */
+.icons {
+  position: absolute;
+  top: 390px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+  z-index: 2;
+}
+
+.icons button {
+  background: transparent;
+  border: none;
+  cursor: pointer; 
+  z-index: 2;
+}
+
+/* بطاقة الإضافة */
+.addCard {
+  background-color: var(--bg1-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 300px;
+  transition: background-color 0.3s ease;
+}
+
+.addCard:hover {
+  background-color: var(--bg1-color);
+
+}
+
+.addButton {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--bg2-color);
 }

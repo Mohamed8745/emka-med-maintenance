@@ -21,15 +21,15 @@ class Utilisateur(AbstractUser):
     
     @property
     def is_admin(self):
-        return self.role == 'administrateur'
+        return self.role == 'Administrateur'
 
     @property
     def is_responsable(self):
-        return self.role == 'responsable'
+        return self.role == 'Responsable'
     
     @property
     def is_magasinier(self):
-        return self.role == 'magasinier'
+        return self.role == 'Magasinier'
     
     def __str__(self):
         return f"{self.first_name} {self.last_name}" if self.first_name and self.last_name else self.email

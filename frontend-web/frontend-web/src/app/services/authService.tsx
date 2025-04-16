@@ -115,6 +115,26 @@ const authService = {
     }
   },
 
+  updateStock: async (id: number, data: Record<string, any>) => {
+    try {
+      const res = await API.put(`/stocks/${id}/`, data);
+      return res.data;
+    } catch (err) {
+      console.error("فشل في تحديث المخزن", err);
+      return null;
+    }
+  },
+
+  deleteStock: async (id: number) => {
+    try {
+      const res = await API.delete(`/stocks/${id}/`);
+      return res.data;
+    } catch (err) {
+      console.error("فشل في حذف المخزن", err);
+      return null;
+    }
+  },
+
   // يمكن إضافة خدمات أخرى لاحقًا
 };
 
