@@ -1,0 +1,65 @@
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.rapport-container {
+    background-color: #dce0e5;
+    padding: 20px;
+    width: 482px;
+    height: 573px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.input-row {
+    
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.input-text {
+    width: 30%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+.textarea {
+    width: 438px;
+    height:358px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+.input1{
+    text-align: right;
+}
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.identity {
+    font-size: 10px;
+    color: #666;
+}
+
+.submit-button {
+    background-color: #3399cc;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #287ba3;
+}

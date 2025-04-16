@@ -47,6 +47,8 @@ export default function Home() {
             </button>
           </Link>
         </div>
+        <Link href="./pages/OperatorForm"><button className={`${styles.btn} ${styles.btnLight}`}>Sign up</button></Link>
+
       </div>
     </main>
   );
