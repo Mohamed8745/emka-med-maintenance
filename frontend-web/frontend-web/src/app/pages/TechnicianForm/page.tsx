@@ -5,6 +5,7 @@ import styles from "../../styles/TechniForm.module.css";
 const techniForm = () => {
   // الحالة (state) لكل مدخل من مدخلات النموذج
   const [description, setDescription] = useState("Remplacer le filtre d'huile");
+  const [showAI, setShowAI] = useState(false);
   const [technicien, setTechnicien] = useState("Jean Dupont");
   const [dateDebut, setDateDebut] = useState("2025-04-10");
   const [dateFin, setDateFin] = useState("2025-04-12");
@@ -55,6 +56,19 @@ const techniForm = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
       </div>
+      <div className={styles["ai-toggle-container"]}>
+  {!showAI ? (
+    <button
+      type="button"
+      className={styles["ai-button"]}
+      onClick={() => setShowAI(true)}
+    >
+      Analyses IA
+    </button>
+  ) : (
+    <div className={styles["ai-placeholder"]}></div>
+  )}
+</div>
 
       {/* التقني المسؤول */}
       <div className={styles["form-group"]}>

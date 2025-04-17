@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import styles from "../../styles/OperatForm.module.css"; 
 
 const OperatorForm = () => {
+  const [showAI, setShowAI] = useState(false);
   const [description, setDescription] = useState<string>("");
   const [status, setStatus] = useState<string>("Ouvert");
   const [dateSignalement, setDateSignalement] = useState<string>("");
@@ -79,6 +80,19 @@ const OperatorForm = () => {
           onChange={(e) => setDescription(e.target.value)}
           required
         ></textarea>
+        <div className={styles["ai-toggle-container"]}>
+  {!showAI ? (
+    <button
+      type="button"
+      className={styles["ai-button"]}
+      onClick={() => setShowAI(true)}
+    >
+      Analyses IA
+    </button>
+  ) : (
+    <div className={styles["ai-placeholder"]}></div>
+  )}
+</div>
 
         <div className={styles["form-group"]}>
           <label htmlFor="file" className={styles["form-label"]}>Joindre un fichier</label>
