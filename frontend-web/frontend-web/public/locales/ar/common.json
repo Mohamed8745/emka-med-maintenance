@@ -140,5 +140,45 @@
       "cancel_button": "إلغاء",
       "input_title": "اكتب الاسم بالضبط 4 مرات مفصولة بمسافات",
       "error_failed": "فشل في حذف المخزن. حاول مرة أخرى."
-    }
+    },
+    "stock_piece_page": {
+    "title": "إدارة قطع الغيار في المخزون",
+    "search_placeholder": "ابحث حسب الاسم أو المرجع...",
+    "reference": "المرجع",
+    "category": "الفئة",
+    "quantity": "الكمية",
+    "unit_price": "السعر الوحدي",
+    "no_pieces": "لا توجد قطع غيار في هذا المخزون",
+    "error_fetch": "فشل في جلب بيانات قطع الغيار",
+    "error_add": "فشل في إضافة قطعة الغيار",
+    "error_edit": "فشل في تعديل قطعة الغيار",
+    "error_delete": "فشل في حذف قطعة الغيار"
+  },
+  "add_stock_piece_modal": {
+    "title": "إضافة قطعة غيار إلى المخزون",
+    "piece_id": "معرف القطعة",
+    "quantity": "الكمية",
+    "add_button": "إضافة",
+    "cancel_button": "إلغاء"
+  },
+  "edit_stock_piece_modal": {
+    "title": "تعديل قطعة غيار في المخزون",
+    "piece_id": "معرف القطعة",
+    "quantity": "الكمية",
+    "save_button": "حفظ التغييرات",
+    "cancel_button": "إلغاء"
+  },
+  "delete_stock_piece_modal": {
+    "title": "تأكيد حذف قطعة الغيار",
+    "confirm_message": "هل أنت متأكد من أنك تريد حذف هذه القطعة من المخزون؟",
+    "warning_message": "هذا الإجراء لا يمكن التراجع عنه!",
+    "confirm_prompt": "للتأكيد، اكتب اسم القطعة أربع مرات مفصولة بمسافات.",
+    "type_instruction": "اكتب: اسم القطعة اسم القطعة اسم القطعة اسم القطعة",
+    "space_note": "ملاحظة: تأكد من وجود مسافة بين كل كلمة",
+    "placeholder": "اكتب اسم القطعة أربع مرات...",
+    "input_title": "يجب كتابة اسم القطعة أربع مرات لتفعيل زر الحذف",
+    "delete_button": "حذف",
+    "delete_loading": "جارٍ الحذف...",
+    "cancel_button": "إلغاء"
+  }
   }

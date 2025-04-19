@@ -141,5 +141,45 @@
       "cancel_button": "Cancel",
       "input_title": "Type the name exactly 4 times separated by spaces",
       "error_failed": "Failed to delete the store. Try again."
-    }
+    },
+    "stock_piece_page": {
+    "title": "Manage Spare Parts in Stock",
+    "search_placeholder": "Search by name or reference...",
+    "reference": "Reference",
+    "category": "Category",
+    "quantity": "Quantity",
+    "unit_price": "Unit Price",
+    "no_pieces": "No spare parts in this stock",
+    "error_fetch": "Failed to fetch spare parts data",
+    "error_add": "Failed to add spare part",
+    "error_edit": "Failed to edit spare part",
+    "error_delete": "Failed to delete spare part"
+  },
+  "add_stock_piece_modal": {
+    "title": "Add Spare Part to Stock",
+    "piece_id": "Piece ID",
+    "quantity": "Quantity",
+    "add_button": "Add",
+    "cancel_button": "Cancel"
+  },
+  "edit_stock_piece_modal": {
+    "title": "Edit Spare Part in Stock",
+    "piece_id": "Piece ID",
+    "quantity": "Quantity",
+    "save_button": "Save Changes",
+    "cancel_button": "Cancel"
+  },
+  "delete_stock_piece_modal": {
+    "title": "Confirm Spare Part Deletion",
+    "confirm_message": "Are you sure you want to delete this spare part from the stock?",
+    "warning_message": "This action cannot be undone!",
+    "confirm_prompt": "To confirm, type the piece name four times, separated by spaces.",
+    "type_instruction": "Type: piece name piece name piece name piece name",
+    "space_note": "Note: Ensure there is a space between each word",
+    "placeholder": "Type the piece name four times...",
+    "input_title": "You must type the piece name four times to enable the delete button",
+    "delete_button": "Delete",
+    "delete_loading": "Deleting...",
+    "cancel_button": "Cancel"
+  }
   }

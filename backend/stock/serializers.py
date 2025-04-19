@@ -16,6 +16,8 @@ class StockSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class StockPieceSerializer(serializers.ModelSerializer):
+    piece = PieceDeRechangeSerializer()  # تسلسل متداخل لقطعة الغيار
+    stock = StockSerializer()
     class Meta:
         model = StockPiece
         fields = '__all__'

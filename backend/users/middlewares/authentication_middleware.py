@@ -14,6 +14,10 @@ class JWTAuthFromCookieMiddleware:
             # إضافة التوكن في الـ Authorization header
             request.META["HTTP_AUTHORIZATION"] = f"Bearer {access_token}"
         
+        if request.path.startswith('/admin/'):
+            return self.get_response(request)
+
+        
         # متابعة باقي العملية
         return self.get_response(request)
     

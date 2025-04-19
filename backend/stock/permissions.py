@@ -16,4 +16,4 @@ class IsMagasinierOrReadOnly(permissions.BasePermission):
             return True
 
         # التحقق من صلاحية Magasinier بأمان
-        return getattr(request.user, "is_magasinier", False)
+        return getattr(request.user, "is_magasinier", False) 

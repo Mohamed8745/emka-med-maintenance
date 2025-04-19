@@ -1,23 +1,25 @@
-'use client';
-
-import { ReactNode, useEffect } from "react";
+import { Metadata } from "next";
+import { ReactNode } from "react";
 import "./globals.css";
-import { AuthProvider } from "./context/AuthContext";
-import ThemeInitializer from "./components/ThemeInitializer";
-import i18n from '../../i18n'; // Import the i18n initialization file
+import ClientWrapper from "./ClientWrapper";
+
+// تعريف البيانات الوصفية العامة للتطبيق
+export const metadata: Metadata = {
+  title: {
+    default: "Emka Med Maintenance",
+    template: "%s | Emka Med Maintenance",
+  },
+  description: "A platform for medical equipment maintenance and management.",
+  viewport: "width=device-width, initial-scale=1",
+};
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 export default function RootLayout({ children }: LayoutProps) {
-  useEffect(() => {
-    // This ensures that i18next is initialized before rendering any component
-    i18n.init();
-  }, []);
-
   return (
-    <html lang="en">
+    <html>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -27,10 +29,7 @@ export default function RootLayout({ children }: LayoutProps) {
         />
       </head>
       <body suppressHydrationWarning={true}>
-        <AuthProvider>
-          <ThemeInitializer />
-          {children}
-        </AuthProvider>
+        <ClientWrapper>{children}</ClientWrapper>
       </body>
     </html>
   );

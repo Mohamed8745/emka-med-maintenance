@@ -8,6 +8,8 @@ import ProfileModal from "../components/ProfileModal";
 import SettingModal from "../components/SettingModal";
 import Link from "next/link";
 import { useTranslation } from "next-i18next"; // استيراد الترجمة
+import  stockService  from "../services/stockService";
+import { ChevronDown, ChevronRight } from "lucide-react";
 interface User {
   id: number;
   username: string;
@@ -52,7 +54,7 @@ const getNavItems = (role: string, t: any) => {
       return [
         { title: t("header.dashboard"), id: "dashboard" },
         { title: t("header.machine"), id: "maintenance" },
-        { title: t("maintenance"), id: "rapport" },
+        { title: t("header.maintenance"), id: "rapport" },
         { title: t("header.rapport"), id: "rapport" },
       ];
     default:
@@ -68,6 +70,21 @@ export default function Header({ children }: { children?: React.ReactNode }) {
   const [navItems, setNavItems] = useState<{ title: string; id: string }[]>([]);
   const [showProfile, setShowProfile] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
+  const [stocks, setStocks] = useState<{ id: number; name: string }[]>([]);
+  const [showStockList, setShowStockList] = useState(false);
+  
+  useEffect(() => {
+    const fetchStocks = async () => {
+      try {
+        const data = await stockService.getStocks() as { id: number; name: string }[];
+        setStocks(data); // تأكد أن كل stock فيه id وname
+      } catch (error) {
+        console.error("Error fetching stocks:", error);
+      }
+    };
+  
+    fetchStocks();
+  }, []);
 
   useEffect(() => {
     async function fetchUser() {
@@ -204,21 +221,53 @@ export default function Header({ children }: { children?: React.ReactNode }) {
         </header>
 
         <motion.aside
-          className={`${styles.sidebar} ${
-            isSidebarOpen ? styles.open : styles.closed
-          }`}
-          initial={{ x: -400 }}
-          animate={{ x: isSidebarOpen ? 0 : -400 }}
-          transition={{ duration: 0.5 }}
-        >
-          <nav>
-            {navItems.map((item) => (
-              <Link href={`/pages/${item.id}`} key={item.id}>
-                <button className={styles.navButton}>{item.title}</button>
-              </Link>
-            ))}
-          </nav>
-        </motion.aside>
+  className={`${styles.sidebar} ${isSidebarOpen ? styles.open : styles.closed}`}
+  initial={{ x: -400 }}
+  animate={{ x: isSidebarOpen ? 0 : -400 }}
+  transition={{ duration: 0.5 }}
+>
+  <nav>
+    {navItems.map((item) => (
+      <div key={item.id}>
+        {item.id === "stock" ? (
+          <>
+          <div className={styles.navButton1}>
+            <Link href="/pages/stock" className={styles.navButtonTitle}>
+              {item.title}
+            </Link>
+            <button
+              onClick={() => setShowStockList(!showStockList)}
+              className={styles.chevronButton}
+            >
+              {showStockList ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
+            </button>
+          </div>
+          
+          {showStockList && (
+            <div className={styles.subMenu}>
+              {stocks.map((stock) => (
+                <Link
+                  key={stock.id}
+                  href={`/pages/piece?stock=${stock.id}`}
+                  className={styles.subMenuItem}
+                >
+                  {stock.name}
+                </Link>
+              ))}
+            </div>
+          )}
+          
+            </>
+          ) : (
+            <Link href={`/pages/${item.id}`}>
+              <button className={styles.navButton} style={{ textDecorationLine: "none" }}>{item.title}</button>
+            </Link>
+          )}
+        </div>
+    ))}
+  </nav>
+</motion.aside>
+
 
         {showProfile && user && (
           <ProfileModal 

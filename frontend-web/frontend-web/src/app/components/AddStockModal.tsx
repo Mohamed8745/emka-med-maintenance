@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "../styles/AddStockModal.module.css";
-import authService from "../services/authService";
+import stockService from "../services/stockService";
 import { useTranslation } from "next-i18next";
 
 interface AddStoreModalProps {
@@ -60,7 +60,7 @@ const AddStoreModal: React.FC<AddStoreModalProps> = ({ onClose, onSubmit }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const addedWarehouse = await authService.addStock(formData);
+      const addedWarehouse = await stockService.addStock(formData);
       if (addedWarehouse) {
         onSubmit(formData);
         onClose();

@@ -141,5 +141,45 @@
       "cancel_button": "Annuler",
       "input_title": "Tapez le nom exactement 4 fois, séparé par des espaces",
       "error_failed": "Échec de la suppression du magasin. Réessayez."
-    }
+    },
+    "stock_piece_page": {
+    "title": "Gestion des pièces de rechange dans le stock",
+    "search_placeholder": "Rechercher par nom ou référence...",
+    "reference": "Référence",
+    "category": "Catégorie",
+    "quantity": "Quantité",
+    "unit_price": "Prix unitaire",
+    "no_pieces": "Aucune pièce de rechange dans ce stock",
+    "error_fetch": "Échec de la récupération des données des pièces",
+    "error_add": "Échec de l'ajout de la pièce de rechange",
+    "error_edit": "Échec de la modification de la pièce de rechange",
+    "error_delete": "Échec de la suppression de la pièce de rechange"
+  },
+  "add_stock_piece_modal": {
+    "title": "Ajouter une pièce de rechange au stock",
+    "piece_id": "Identifiant de la pièce",
+    "quantity": "Quantité",
+    "add_button": "Ajouter",
+    "cancel_button": "Annuler"
+  },
+  "edit_stock_piece_modal": {
+    "title": "Modifier une pièce de rechange dans le stock",
+    "piece_id": "Identifiant de la pièce",
+    "quantity": "Quantité",
+    "save_button": "Enregistrer les modifications",
+    "cancel_button": "Annuler"
+  },
+  "delete_stock_piece_modal": {
+    "title": "Confirmer la suppression de la pièce",
+    "confirm_message": "Êtes-vous sûr de vouloir supprimer cette pièce du stock ?",
+    "warning_message": "Cette action est irréversible !",
+    "confirm_prompt": "Pour confirmer, tapez le nom de la pièce quatre fois, séparé par des espaces.",
+    "type_instruction": "Tapez : nom de la pièce nom de la pièce nom de la pièce nom de la pièce",
+    "space_note": "Remarque : Assurez-vous qu'il y a un espace entre chaque mot",
+    "placeholder": "Tapez le nom de la pièce quatre fois...",
+    "input_title": "Vous devez taper le nom de la pièce quatre fois pour activer le bouton de suppression",
+    "delete_button": "Supprimer",
+    "delete_loading": "Suppression en cours...",
+    "cancel_button": "Annuler"
   }
+}  

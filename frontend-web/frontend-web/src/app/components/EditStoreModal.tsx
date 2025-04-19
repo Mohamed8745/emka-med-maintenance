@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "../styles/AddStockModal.module.css";
-import authService from "../services/authService";
+import stockService from "../services/stockService";
 import { useTranslation } from "next-i18next";
 
 interface EditStoreModalProps {
@@ -51,7 +51,7 @@ const EditStoreModal: React.FC<EditStoreModalProps> = ({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const updatedWarehouse = await authService.updateStock(
+      const updatedWarehouse = await stockService.updateStock(
         warehouse.id,
         formData
       );

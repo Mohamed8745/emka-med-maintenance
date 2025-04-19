@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "../styles/delete.module.css";
-import authService from "../services/authService";
+import stockService from "../services/stockService";
 import { useTranslation } from "next-i18next";
 
 interface DeleteStoreModalProps {
@@ -35,7 +35,7 @@ const DeleteStoreModal: React.FC<DeleteStoreModalProps> = ({
   const handleDelete = async () => {
     if (!isConfirmed()) return;
     setIsLoading(true);
-    const result = await authService.deleteStock(stockId);
+    const result = await stockService.deleteStock(stockId);
     setIsLoading(false);
     if (result !== null) {
       onDelete();
