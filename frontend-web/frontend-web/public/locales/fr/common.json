@@ -181,5 +181,58 @@
     "delete_button": "Supprimer",
     "delete_loading": "Suppression en cours...",
     "cancel_button": "Annuler"
-  }
+  },
+  
+    "operator_form": {
+    "title": "Rapport de l'opérateur",
+    "description_placeholder": "Entrez la description",
+    "attach_file": "Joindre un fichier",
+    "choose_file": "Choisir un fichier",
+    "no_file": "Aucun fichier sélectionné",
+    "submit": "Envoyer le rapport",
+    "ai_analysis": "Analyses IA",
+    "status_open": "Ouvert",
+    "status_processing": "En cours",
+    "status_resolved": "Résolu",
+    "success_message": "Rapport envoyé avec succès.",
+    "error_message": "Échec de l'envoi du rapport."
+  },
+    
+  "techni_form": {
+      "title": "Modifier une Tâche",
+      "description": "Description",
+      "technician": "Technicien responsable",
+      "start_date": "Date de début",
+      "end_date": "Date de fin",
+      "assigned_to": "Assigné à",
+      "status": "Statut",
+      "status_pending": "En attente",
+      "status_in_progress": "En cours",
+      "status_done": "Terminé",
+      "submit": "Enregistrer",
+      "success_message": "✅ Tâche enregistrée avec succès !",
+      "error_message": "❌ Une erreur s'est produite lors de l'enregistrement.",
+      "ai_analysis": "Analyses IA",
+      "ai_placeholder": "Module IA ici"
+    },
+  
+  
+      
+      
+        "rapport_form": {
+          "type_placeholder": "Type de rapport...",
+          "description_placeholder": "Description du rapport...",
+          "send": "Envoyer le rapport",
+          "success": "✅ Rapport envoyé avec succès !",
+          "error": "❌ Échec de l'envoi du rapport."
+        }
+      
+      
+      
+      
+      
+        
+      
+      
+     
 }  

@@ -1,21 +1,20 @@
-body {
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
 .rapport-container {
-  background-color: #dce0e5;
+  background-color: var(--bg1-color);
   padding: 20px;
   width: 480px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+  font-family: "Jua", sans-serif;
+  color: var(--text-color);
+  margin-top: 50px;
 
+}
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
 .input-row {
   display: flex;
   gap: 10px;
@@ -25,14 +24,16 @@ body {
 .input-text {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--bg1h-color);
   border-radius: 5px;
   font-size: 14px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   transition: border-color 0.3s ease;
 }
 
 .input-text:focus {
-  border-color: #3399cc;
+  border-color: var(--bg2-color);
   outline: none;
 }
 
@@ -40,15 +41,17 @@ body {
   width: 96%;
   height: 200px;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--bg1h-color);
   border-radius: 5px;
   resize: vertical;
   font-size: 14px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   transition: border-color 0.3s ease;
 }
 
 .textarea:focus {
-  border-color: #3399cc;
+  border-color: var(--bg2-color);
   outline: none;
 }
 
@@ -60,8 +63,8 @@ body {
 }
 
 .submit-button {
-  background-color: #3399cc;
-  color: #fff;
+  background-color: var(--bg2-color);
+  color: var(--text1-color);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -71,7 +74,7 @@ body {
 }
 
 .submit-button:hover {
-  background-color: #287ba3;
+  background-color: var(--bg2h-color);
 }
 
 /* تنسيقات رفع الملفات */
@@ -96,8 +99,8 @@ body {
 }
 
 .file-label {
-  background-color: #3399cc;
-  color: #fff;
+  background-color: var(--bg2-color);
+  color: var(--text1-color);
   padding: 8px 15px;
   border-radius: 5px;
   font-size: 14px;
@@ -107,28 +110,29 @@ body {
 }
 
 .file-label:hover {
-  background-color: #287ba3;
+  background-color: var(--bg2h-color);
 }
 
 .file-name {
   flex: 1;
   padding: 8px 12px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: var(--bg-color);
+  border: 1px solid var(--bg1h-color);
   border-radius: 5px;
   font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .ai-toggle-container {
   margin-top: 15px;
   text-align: center;
 }
 
 .ai-button {
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--success-color, #4caf50);
+  color: var(--text1-color);
   border: none;
   padding: 10px 20px;
   font-size: 14px;
@@ -138,13 +142,13 @@ body {
 }
 
 .ai-button:hover {
-  background-color: #3e8e41;
+  background-color: var(--success-dark-color, #3e8e41);
 }
 
 .ai-placeholder {
   width: 100%;
   height: 150px;
-  background-color: white;
-  border: 1px dashed #ccc;
+  background-color: var(--bg-color);
+  border: 1px dashed var(--bg1h-color);
   border-radius: 5px;
 }

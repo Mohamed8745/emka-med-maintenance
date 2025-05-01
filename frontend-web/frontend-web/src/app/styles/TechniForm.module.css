@@ -1,125 +1,122 @@
 .tache-form {
-    width: 400px;
-    background-color: #A7A7A7;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    padding: 20px;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-  }
+  width: 400px;
+  background-color: var(--bg1-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 20px auto;
+  font-family: "Jua", sans-serif;
+  color: var(--text-color);
+  margin-top: 50px;
+}
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .header h2 {
-    font-size: 22px;
-    color: #333;
-  }
-  
-  .status {
-    padding: 5px 12px;
-    background-color: #ffcc00;
-    color: #333;
-    border-radius: 5px;
-    font-size: 13px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-    font-weight: bold;
-  }
-  .form-group1 {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-  }
-  
-  .form-group1 label {
-    font-weight: bold;
-    margin-bottom: 6px;
-    color: #333;
-    font-size: 14px;
-  }
-  
-  .form-group1 select {
-    padding: 8px 12px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #fff;
-    color: #333;
-    transition: border-color 0.3s ease;
-  }
-  
-  .form-group1 select:focus {
-    outline: none;
-    border-color: #007BFF;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 14px;
-    box-sizing: border-box;
-  }
-  
-  .footer {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .footer button {
-    background-color: #1F6899;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-  }
-  .ai-toggle-container {
-    margin-top: 15px;
-    text-align: center;
-  }
-  
-  .ai-button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .ai-button:hover {
-    background-color: #3e8e41;
-  }
-  
-  .ai-placeholder {
-    width: 100%;
-    height: 150px;
-    background-color: white;
-    border: 1px dashed #ccc;
-    border-radius: 5px;
-  }
-  
-  
-  
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  font-size: 22px;
+  color: var(--text1-color);
+}
+
+.status {
+  padding: 5px 12px;
+  background-color: var(--accent-color, #ffcc00);
+  color: var(--text1-color);
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.form-group,
+.form-group1 {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label,
+.form-group1 label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group1 select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--bg1h-color);
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group1 select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--bg2-color);
+  box-shadow: 0 0 5px var(--bg2-color);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer button {
+  background-color: var(--bg2-color);
+  color: var(--text1-color);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Jua", sans-serif;
+  transition: background-color 0.3s;
+}
+
+.footer button:hover {
+  background-color: var(--bg2h-color);
+}
+
+.ai-toggle-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.ai-button {
+  background-color: var(--success-color, #4caf50);
+  color: var(--text1-color);
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ai-button:hover {
+  background-color: var(--success-dark-color, #3e8e41);
+}
+
+.ai-placeholder {
+  width: 100%;
+  height: 150px;
+  background-color: var(--bg-color);
+  border: 1px dashed var(--bg1h-color);
+  border-radius: 5px;
+}

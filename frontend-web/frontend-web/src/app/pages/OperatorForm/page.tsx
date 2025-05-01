@@ -1,27 +1,47 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import styles from "../../styles/OperatForm.module.css"; 
+import styles from "../../styles/OperatForm.module.css";
+import operatorReportService from "../../services/operatorReportService";
+import Header from "../../components/header";
+import SearchBar from "../../components/searchbar";
+import ProtectedRoute from "../../components/auth/ProtectedRoute";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/navigation";
 
 const OperatorForm = () => {
-  const [showAI, setShowAI] = useState(false);
-  const [description, setDescription] = useState<string>("");
-  const [status, setStatus] = useState<string>("Ouvert");
-  const [dateSignalement, setDateSignalement] = useState<string>("");
+  const { t } = useTranslation("common");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("Ouvert");
+  const [dateSignalement, setDateSignalement] = useState("");
   const [image, setImage] = useState<File | null>(null);
-  const [fileName, setFileName] = useState<string>("Aucun fichier sélectionné");
+  const [fileName, setFileName] = useState(t("operator_form.no_file"));
+  const [showAI, setShowAI] = useState(false);
 
   useEffect(() => {
     const now = new Date();
-    const formattedDate = now.toISOString().slice(0, 16); 
-    setDateSignalement(formattedDate);
+    setDateSignalement(now.toISOString().slice(0, 16));
   }, []);
 
+  const handleSearch = (query: string) => {
+    console.log("Search query:", query);
+  };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setImage(e.target.files[0]);
-      setFileName(e.target.files[0].name);
+    const file = e.target.files?.[0];
+    if (file) {
+      setImage(file);
+      setFileName(file.name);
     }
+  };
+
+  const resetForm = () => {
+    setDescription("");
+    setStatus("Ouvert");
+    setDateSignalement(new Date().toISOString().slice(0, 16));
+    setImage(null);
+    setFileName(t("operator_form.no_file"));
+    setShowAI(false);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,90 +53,95 @@ const OperatorForm = () => {
     formData.append("dateSignalement", dateSignalement);
     if (image) formData.append("image", image);
 
-    const res = await fetch("/api/reports", {
-      method: "POST",
-      body: formData,
-    });
+    const result = await operatorReportService.send(formData);
 
-    if (res.ok) {
-      alert("تم إرسال التقرير بنجاح");
-      setDescription("");
-      setStatus("Ouvert");
-      setDateSignalement(new Date().toISOString().slice(0, 16));
-      setImage(null);
-      setFileName("Aucun fichier sélectionné");
+    if (result) {
+      alert(t("operator_form.success_message")); // ✅ تم
+      resetForm();
     } else {
-      alert("حدث خطأ أثناء الإرسال");
+      alert(t("operator_form.error_message")); // ❌ فشل
     }
   };
 
   return (
-    <div className={styles["rapport-container"]}>
-      <form onSubmit={handleSubmit} className={styles.formContainer}>
-        <h2 className={styles.title}>Rapport de l'opérateur</h2>
+    <ProtectedRoute>
+      <div>
+        <Header>
+          <SearchBar onSearch={handleSearch} />
+        </Header>
+        <div className={styles["mainContainer"]}>
+        <div className={styles["rapport-container"]}>
+          <form onSubmit={handleSubmit} className={styles.formContainer}>
+            <h2 className={styles.title}>{t("operator_form.title")}</h2>
 
-        <div className={styles["input-row"]}>
-          <input
-            type="datetime-local"
-            className={styles["input-text"]}
-            value={dateSignalement}
-            readOnly
-          />
-          <select
-            className={styles["input-text"]}
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-          >
-            <option value="Ouvert">Ouvert</option>
-            <option value="En cours">En cours de traitement</option>
-            <option value="Résolu">Résolu</option>
-          </select>
-        </div>
+            <div className={styles["input-row"]}>
+              <input
+                type="datetime-local"
+                className={styles["input-text"]}
+                value={dateSignalement}
+                readOnly
+              />
+              <select
+                className={styles["input-text"]}
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+              >
+                <option value="Ouvert">{t("operator_form.status_open")}</option>
+                <option value="En cours">{t("operator_form.status_processing")}</option>
+                <option value="Résolu">{t("operator_form.status_resolved")}</option>
+              </select>
+            </div>
 
-        <textarea
-          className={styles.textarea}
-          placeholder="Entrez la description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        ></textarea>
-        <div className={styles["ai-toggle-container"]}>
-  {!showAI ? (
-    <button
-      type="button"
-      className={styles["ai-button"]}
-      onClick={() => setShowAI(true)}
-    >
-      Analyses IA
-    </button>
-  ) : (
-    <div className={styles["ai-placeholder"]}></div>
-  )}
-</div>
-
-        <div className={styles["form-group"]}>
-          <label htmlFor="file" className={styles["form-label"]}>Joindre un fichier</label>
-          <div className={styles["file-upload"]}>
-            <input
-              type="file"
-              id="file"
-              className={styles["form-file"]}
-              onChange={handleFileChange}
+            <textarea
+              className={styles.textarea}
+              placeholder={t("operator_form.description_placeholder")}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
             />
-            <label htmlFor="file" className={styles["file-label"]}>
-              Choisir un fichier
-            </label>
-            <span className={styles["file-name"]}>{fileName}</span>
-          </div>
-        </div>
 
-        <div className={styles.footer}>
-          <button type="submit" className={styles["submit-button"]}>
-            Envoyer le rapport
-          </button>
+            <div className={styles["ai-toggle-container"]}>
+              {!showAI ? (
+                <button
+                  type="button"
+                  className={styles["ai-button"]}
+                  onClick={() => setShowAI(true)}
+                >
+                  {t("operator_form.ai_analysis")}
+                </button>
+              ) : (
+                <div className={styles["ai-placeholder"]}></div>
+              )}
+            </div>
+
+            <div className={styles["form-group"]}>
+              <label htmlFor="file" className={styles["form-label"]}>
+                {t("operator_form.attach_file")}
+              </label>
+              <div className={styles["file-upload"]}>
+                <input
+                  type="file"
+                  id="file"
+                  className={styles["form-file"]}
+                  onChange={handleFileChange}
+                />
+                <label htmlFor="file" className={styles["file-label"]}>
+                  {t("operator_form.choose_file")}
+                </label>
+                <span className={styles["file-name"]}>{fileName}</span>
+              </div>
+            </div>
+
+            <div className={styles.footer}>
+              <button type="submit" className={styles["submit-button"]}>
+                {t("operator_form.submit")}
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
+      </div>
+      </div>
+    </ProtectedRoute>
   );
 };
 

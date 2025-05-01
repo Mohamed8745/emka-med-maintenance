@@ -31,6 +31,8 @@ const getNavItems = (role: string, t: any) => {
         { title: t("header.maintenance"), id: "maintenance" },
         { title: t("header.stock"), id: "stock" },
         { title: t("header.rapport"), id: "rapport" },
+        { title: t("header.TechnicianForm"), id: "tache" },
+
       ];
     case "Operateur":
       return [
@@ -38,6 +40,8 @@ const getNavItems = (role: string, t: any) => {
         { title: t("header.machine"), id: "machine" },
         { title: t("header.maintenance"), id: "maintenance" },
         { title: t("header.rapport"), id: "rapport" },
+        { title: t("header.OperatorForm"), id: "probleme" },
+
       ];
     case "Admin":
       return [
@@ -88,7 +92,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
 
   useEffect(() => {
     async function fetchUser() {
-      try {
+      /*try {
         const userData = await getUser();
         if (!userData) {
           window.location.href = "/pages/login";
@@ -100,7 +104,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
       } catch (error) {
         console.error("Error fetching user data:", error);
         window.location.href = "/pages/login";
-      }
+      }*/
     }
 
     fetchUser();
