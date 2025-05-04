@@ -7,6 +7,7 @@ html, body {
   overflow-x: hidden;
   background-color: var(--bg-color);
   color: var(--text-color);
+  font-family: 'Jua', sans-serif;
 }
 
 :root {
@@ -34,6 +35,7 @@ html, body {
   --bg3h-color: #363636;
   --text-color: #ffffff;
   --text1-color: #ffffff;
+  --text1h-color: #eeeeee;
   --text2-color: #9b9b9b;
   --background-color: #1e1e1e;
   --text3-color: #eee;
@@ -53,6 +55,7 @@ html, body {
   --bg3h-color: #6f6f6f;
   --text-color: #1F6899;
   --text1-color: #ffffff;
+  --text1h-color: #eeeeee;
   --text2-color: #1F6899;
   --background-color: #ffffff;
   --text3-color: #222;

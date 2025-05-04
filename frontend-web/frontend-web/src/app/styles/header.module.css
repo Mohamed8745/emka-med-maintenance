@@ -5,8 +5,8 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 50px; 
-    top: 0;          
+    height: 50px;
+    top: 0;
     left: 0;
     z-index: 10;
 }
@@ -44,6 +44,7 @@
     cursor: pointer;
     font-size: 20px;
     color: var(--text-color);
+    
 }
 
 .logo {
@@ -52,23 +53,39 @@
     object-fit: cover;
 }
 
-.searchBar {
+.searchBarContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
     width: 558px;
+}
+
+.searchBar {
+    width: 100%;
     height: 30px;
     border: 1px solid var(--bg-color);
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 5px 10px 5px 35px;
     font-size: 16px;
     font-family: "Jua", sans-serif;
-    font-style: normal;
     color: var(--text-color);
     background-color: var(--bg-color);
-    z-index: 100;
 }
 
-.searchBar:focus{
+.searchBar::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.searchBar:focus {
     border: 2px solid var(--text-color);
     outline: none;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 10px;
+    color: var(--text-color);
 }
 
 .profileMenu {
@@ -78,7 +95,7 @@
 .avatarButton {
     width: 54px;
     height: 54px;
-    background-color: var(--bg2-color);;
+    background-color: var(--bg2-color);
     color: var(--text1-color);
     font-size: 20px;
     border: none;
@@ -90,7 +107,6 @@
     justify-content: center;
     overflow: hidden;
 }
-
 
 .dropdownContent {
     position: fixed;
@@ -108,20 +124,25 @@
     z-index: 100;
 }
 
-
 .dropdownItem {
     font-size: 18px;
     color: var(--text-color);
     padding: 10px;
     cursor: pointer;
     font-family: "Jua", sans-serif;
-    font-style: normal;
-    text-align: center;
-
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.dropdownItem:hover{
-    background-color: var(--bg1h-color);}
+.dropdownItem:hover {
+    background-color: var(--bg1h-color);
+}
+
+.dropdownItemIcon {
+    display: flex;
+    align-items: center;
+}
 
 .dropdownContent.open {
     opacity: 1;
@@ -130,46 +151,47 @@
 }
 
 .sidebar {
-    width: 285px;
+    width: 260px;
     height: 668px;
     position: fixed;
     top: 74px;
     left: 0;
     background-color: var(--bg1-color);
     border-radius: 5px;
-    box-shadow: 0px 4px 4px #00000040;
-    border: 10px solid var(--bg1-color);
     z-index: 100;
-    padding: 16px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    text-decoration-line: none;
-    
+    overflow-y: auto;
 }
 
 .nav {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* تباعد بين عناصر القائمة */
-    text-decoration-line: none;
-  }
-  
-  .navButton {
+    gap: 8px;
+}
+
+.navItem {
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.navButton {
     width: 100%;
     text-align: left;
-    padding: 12px 20px;
-    font-size: 17px;
+    padding: 10px 15px;
+    font-size: 16px;
     color: var(--text-color);
     background: none;
     border: none;
     cursor: pointer;
     font-family: "Jua", sans-serif;
     border-radius: 6px;
-    transition: background 0.3s ease;
-    display:inline-flex;
+    display: flex;
     align-items: center;
-    justify-content: space-between;
-    
+    gap: 10px;
+    transition: background 0.3s ease;
+    text-decoration: none;
 }
 
 .navButton:hover,
@@ -177,50 +199,29 @@
 .navButton.active {
     background-color: var(--bg1h-color);
     outline: none;
-    text-decoration: none !important;
-    text-decoration-line: none !important;
 }
-.subMenu {
-    margin-top: 4px;
-    padding-left: 12px;
+
+.navIcon {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
-    text-decoration-line: none;
-}
-.subMenuItem {
-    font-size: 15px;
+    align-items: center;
     color: var(--text-color);
-    padding: 8px 20px;
-    text-decoration: none;
-    transition: background 0.3s ease, color 0.3s ease;
-    border-radius: 6px;
-    font-family: "Jua", sans-serif;
-    margin-left: 12px; /* لإزاحة العناصر قليلاً */
-    text-decoration-line: none;
-}
-.subMenuItem:hover {
-    background-color: var(--bg1h-color);
-    color: var(--accent-color);
-    text-decoration-line: none;
 }
 
 .navButton1 {
-    width: 85.969%;
+    width: 88.47%;
     text-align: left;
-    padding: 12px 20px;
-    font-size: 17px;
+    padding: 10px 15px;
+    font-size: 16px;
     color: var(--text-color);
     background: none;
     border: none;
     cursor: pointer;
     font-family: "Jua", sans-serif;
     border-radius: 6px;
-    transition: background 0.3s ease;
-    display:inline-flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    transition: background 0.3s ease;
 }
 
 .navButton1:hover,
@@ -228,21 +229,18 @@
 .navButton1.active {
     background-color: var(--bg1h-color);
     outline: none;
-    text-decoration: none !important;
-    text-decoration-line: none !important;
 }
 
 .navButtonTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     color: var(--text-color);
     text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .navButton:hover {
-    background-color: var(--bg1h-color);
-  }
-  
-  .chevronButton {
+    font-size: 16px;
+}
+
+.chevronButton {
     background: none;
     border: none;
     cursor: pointer;
@@ -251,8 +249,38 @@
     display: flex;
     align-items: center;
     color: var(--text-color);
+}
 
-  }
+.subMenu {
+    margin-top: 4px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.subMenuItem {
+    font-size: 14px;
+    color: var(--text-color);
+    padding: 8px 15px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    border-radius: 6px;
+    font-family: "Jua", sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.subMenuItem:hover {
+    background-color: var(--bg1h-color);
+}
+
+.subMenuIcon {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+}
 
 .customButton {
     width: 28px;
@@ -264,9 +292,49 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-  }
-  
+}
+
 .customButton:hover {
     background-color: #333;
 }
 
+.mainContent {
+    margin-top: 74px;
+    padding: 20px;
+    text-align: center;
+}
+
+.mainContent h2 {
+    font-size: 24px;
+    color: var(--text-color);
+    font-family: "Jua", sans-serif;
+}
+
+.mainContent p {
+    font-size: 16px;
+    color: var(--text-color);
+    font-family: "Jua", sans-serif;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 18px;
+    color: var(--text-color);
+    font-family: "Jua", sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        padding: 0 10px;
+    }
+    .searchBar {
+        width: 100%;
+    }
+    .sidebar {
+        width: 200px;
+    }
+}

@@ -95,3 +95,18 @@
 .cancelBtn:focus {
   background-color: var(--bg3h-color);
 }
+
+.validationMessage {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #ffebee;
+  border-radius: 4px;
+}

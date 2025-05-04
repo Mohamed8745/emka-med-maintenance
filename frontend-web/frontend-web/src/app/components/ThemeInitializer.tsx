@@ -4,29 +4,25 @@ import { useEffect } from "react";
 
 const ThemeInitializer = () => {
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "system";
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const applyTheme = () => {
-      if (savedTheme === "system") {
-        document.documentElement.setAttribute("data-theme", mediaQuery.matches ? "dark" : "light");
-      } else {
-        document.documentElement.setAttribute("data-theme", savedTheme);
-      }
-    };
-
-    applyTheme(); // نطبق الثيم أول مرة
-
-    if (savedTheme === "system") {
-      mediaQuery.addEventListener("change", applyTheme);
-      return () => mediaQuery.removeEventListener("change", applyTheme);
+    // تهيئة اللغة
+    if (!localStorage.getItem("lang")) {
+      const systemLang = navigator.language.split('-')[0];
+      const supportedLangs = ["ar", "fr", "en"];
+      const defaultLang = supportedLangs.includes(systemLang) ? systemLang : "fr";
+      localStorage.setItem("lang", defaultLang);
+      document.documentElement.setAttribute("lang", defaultLang);
+      document.documentElement.setAttribute("dir", defaultLang === "ar" ? "rtl" : "ltr");
+    } else {
+      const savedLang = localStorage.getItem("lang") || "fr";
+      document.documentElement.setAttribute("lang", savedLang);
+      document.documentElement.setAttribute("dir", savedLang === "ar" ? "rtl" : "ltr");
     }
-  
 
-  // 🌐 Language
-  const savedLang = localStorage.getItem("lang") || "fr";
-  document.documentElement.setAttribute("lang", savedLang);
-}, []);
+    // تهيئة الثيم
+    if (!localStorage.getItem("theme")) {
+      localStorage.setItem("theme", "system");
+    }
+  }, []);
 
   return null;
 };

@@ -17,6 +17,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.hashers import check_password
 from rest_framework_simplejwt.views import TokenObtainPairView
+from django.contrib.auth import logout
 
 
 class UtilisateurViewSet(viewsets.ModelViewSet):
@@ -183,6 +184,7 @@ class LogoutView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
+        logout(request)
         response = Response({"detail": "Logged out successfully"}, status=status.HTTP_200_OK)
         response.delete_cookie('access_token')  # حذف الكوكيز
         return response

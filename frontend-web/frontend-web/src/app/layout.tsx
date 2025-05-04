@@ -1,25 +1,29 @@
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { ReactNode } from "react";
 import "./globals.css";
 import ClientWrapper from "./ClientWrapper";
+import { cookies } from "next/headers";
 
-// تعريف البيانات الوصفية العامة للتطبيق
 export const metadata: Metadata = {
   title: {
     default: "Emka Med Maintenance",
     template: "%s | Emka Med Maintenance",
   },
   description: "A platform for medical equipment maintenance and management.",
-  viewport: "width=device-width, initial-scale=1",
 };
 
 interface LayoutProps {
   children: ReactNode;
 }
 
-export default function RootLayout({ children }: LayoutProps) {
+export default async function RootLayout({ children }: LayoutProps) {
+  const cookieStore = await cookies();
+  const savedLang = cookieStore.get("i18next")?.value;
+  const lng = savedLang && ["en", "fr", "ar"].includes(savedLang) ? savedLang : "fr";
+  const dir = lng === "ar" ? "rtl" : "ltr";
+
   return (
-    <html>
+    <html lang={lng} dir={dir}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

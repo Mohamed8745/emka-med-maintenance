@@ -2,7 +2,8 @@
 from django.urls import path
 from .views import (
     ProblemeListCreateView, ProblemeDetailView, ProblemeChangeStatutView,
-    RapportListCreateView, RapportDetailView, RapportGenererPDFView
+    RapportListCreateView, RapportDetailView, RapportGenererPDFView,
+    refresh_images
 )
 
 urlpatterns = [
@@ -15,4 +16,5 @@ urlpatterns = [
     path('rapports/', RapportListCreateView.as_view()),
     path('rapports/<int:pk>/', RapportDetailView.as_view()),
     path('rapports/<int:pk>/generer-pdf/', RapportGenererPDFView.as_view()),
+    path('refresh-images/', refresh_images, name='refresh_images'),
 ]

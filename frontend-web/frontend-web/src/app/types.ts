@@ -1,12 +1,15 @@
 // src/types.ts
 
 export interface StockPiece {
+  id: string;
+  piece: {
     id: string;
-    stock_id: string;
-    designation: string;
+    name: string;
     reference: string;
-    quantity: number;
-    created_at?: string;
-    updated_at?: string;
-  }
+    categorie: string;
+    prxUnitaire: number;
+    image?: string;
+  };
+  quantite: number;
+}
   

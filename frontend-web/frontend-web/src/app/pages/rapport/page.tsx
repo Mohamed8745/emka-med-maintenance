@@ -9,27 +9,9 @@ const Rapport = () => {
 
   const router = useRouter();
 
-  useEffect(() => {
-    const fetchUserRole = async () => {
-      try {
-        const res = await fetch("http://127.0.0.1:8000/user");
-        const data = await res.json();
-        setRole(data.role);
-      } catch (error) {
-        console.error("Error fetching user role:", error);
-      }
-    };
-
-    const today = new Date();
-    const formattedDate = today.toISOString().split("T")[0];
-    setCurrentDate(formattedDate);
-
-    fetchUserRole();
-  }, []);
-
-  if (!role) return <p>Loading...</p>;
 
   return (
+    <div className={styles.body}>
     <form>
       <div className={styles.rapportContainer}>
         <div className={styles.inputRow}>
@@ -58,6 +40,7 @@ const Rapport = () => {
         </div>
       </div>
     </form>
+    </div>
   );
 };
 

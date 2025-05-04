@@ -13,21 +13,44 @@
 
 .modal {
   background-color: var(--bg1-color);
-  padding: 30px 40px;
+  padding: 20px 30px; /* Increased side padding for spacing */
   border-radius: 10px;
-  width: 450px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s ease-in-out;
   font-family: "Jua", sans-serif;
 }
 
+/* Custom Scrollbar Styling */
+.modal::-webkit-scrollbar {
+  width: 8px; /* Slim scrollbar width */
+}
+
+.modal::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light background for the track */
+  border-radius: 10px;
+  margin: 10px 0; /* Add spacing at the top and bottom of the scrollbar */
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background: var(--bg2-color); /* Use theme color for the thumb */
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+  background: var(--bg2h-color); /* Darker shade on hover */
+}
+
 .title {
-  font-size: 28px;
+  font-size: 24px;
   text-align: center;
   color: var(--text1-color);
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-family: "Jua", sans-serif;
-
 }
 
 .formLabel {
@@ -37,7 +60,6 @@
   font-weight: bold;
   font-size: 16px;
   font-family: "Jua", sans-serif;
-
 }
 
 .formInput {
@@ -49,15 +71,158 @@
   background-color: white;
   font-size: 14px;
   font-family: "Jua", sans-serif;
-
 }
-.formInput:disabled{
-  background-color: #969696;
+
+.formInput:disabled {
+  background-color: #c4c4c4;
+}
+
+.contentFile1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file {
+  position: relative;
+  width: 60%;
+  height: 45px;
+  background-color: var(--bg2-color);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  transition: background 0.3s, transform 0.2s;
+  overflow: hidden;
+  padding: 0 10px;
+}
+
+.file:hover {
+  background-color: var(--bg2h-color);
+  transform: scale(1.05);
+}
+
+.fileName {
+  flex: 1;
+  margin-left: 10px;
+  padding: 8px 12px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: "Jua", sans-serif;
+  max-width: calc(14px * 30);
+  width: 20%;
+  color: var(--text2-color);
+}
+
+.img {
+  margin-left: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.imageNote {
+  font-size: 0.9rem;
+  color: var(--text1-color);
+  margin-left: 10px;
+}
+
+.imageGallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.imageContainer {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.imagePreview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.previewImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.navButton {
+  background: var(--bg2-color);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.navButton:hover {
+  background: var(--bg2h-color);
+}
+
+.navButton:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.removeImageBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.removeImageBtn:hover {
+  background: #d9363e;
+}
+
+.removeImageBtn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
 }
 
 .modalButtons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the buttons */
+  gap: 15px; /* Reduced gap between buttons */
   margin-top: 20px;
 }
 
@@ -70,11 +235,11 @@
   cursor: pointer;
   width: 100px;
   height: 40px;
-  margin: 0 0 0 120px;
   font-family: "Jua", sans-serif;
-
 }
-.addBtn:focus{
+
+.addBtn:focus,
+.addBtn:hover {
   background-color: var(--bg2h-color);
 }
 
@@ -87,12 +252,11 @@
   border: none;
   font-size: 16px;
   cursor: pointer;
-  margin: 0 80px 0 0 ;
   font-family: "Jua", sans-serif;
-
 }
 
-.cancelBtn:focus{
+.cancelBtn:focus,
+.cancelBtn:hover {
   background-color: var(--bg3h-color);
 }
 
@@ -105,4 +269,11 @@
     transform: scale(1);
     opacity: 1;
   }
+}
+
+.error {
+  color: red;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
 }

@@ -1,7 +1,15 @@
+import os
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from stock.models import Stock
+from datetime import datetime
+from django.core.files.base import ContentFile
+from PIL import Image
+from io import BytesIO
+from django.db import models
 
+def get_upload_path(instance, filename):
+    return f"imgUser/{datetime.now().strftime('%Y/%m/%d')}/{instance.username or instance.id}_{filename}"
 class Utilisateur(AbstractUser):
     ROLES = (
         ('Technicien', 'Technicien'),
@@ -14,7 +22,7 @@ class Utilisateur(AbstractUser):
     role = models.CharField(max_length=20, choices=ROLES)
     numidentif = models.IntegerField(unique=True)
     numtel = models.IntegerField(unique=True , default=000000000)
-    image = models.ImageField(upload_to='imgUser/', null=True, blank=True)
+    image = models.ImageField(upload_to="imgUser/%Y/%m/%d", null=True, blank=True)
     # حل مشكلة التعارض بإضافة related_name
     groups = models.ManyToManyField(Group, related_name="custom_user_groups" , blank=True )
     user_permissions = models.ManyToManyField(Permission, related_name="custom_user_permissions", blank=True)
@@ -48,6 +56,35 @@ class Utilisateur(AbstractUser):
     
     def __str__(self):
         return f"{self.first_name} {self.last_name}" if self.first_name and self.last_name else self.email
+    
+    def save(self, *args, **kwargs):
+        is_new = self._state.adding
+
+        if self.image and not is_new:
+            try:
+                old = Utilisateur.objects.get(pk=self.pk)
+                image_changed = old.image != self.image
+            except Utilisateur.DoesNotExist:
+                image_changed = True
+        else:
+            image_changed = True
+
+        if self.image and image_changed:
+            self.image.open()
+            img = Image.open(self.image).convert("RGBA")
+            img = img.resize((300, 300))
+
+            buffer = BytesIO()
+            img.save(buffer, format='PNG')
+            image_content = ContentFile(buffer.getvalue())
+
+            # إعادة تعيين الاسم حسب التاريخ
+            new_name = get_upload_path(self, os.path.basename(self.image.name))
+            self.image.save(new_name, image_content, save=False)
+
+        super().save(*args, **kwargs)
+
+
 
 class Magasinier(Utilisateur):
     stockgere = models.ManyToManyField(Stock)

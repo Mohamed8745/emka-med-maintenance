@@ -1,185 +1,210 @@
 {
-    "home": {
-      "logo_alt": "Logo de l'entreprise",
-      "title": "Bienvenue dans notre système intelligent de gestion de maintenance !",
-      "description": "Optimisez l'efficacité de vos équipements avec l'IA : anticipez les pannes, réduisez les arrêts imprévus et assurez une maintenance préventive. Suivez les opérations en temps réel et prenez des décisions précises via une plateforme intuitive.🔧💡",
-      "login": "Se connecter",
-      "signup": "S'inscrire"
+  "home": {
+    "logo_alt": "Logo de l'entreprise",
+    "title": "Bienvenue dans notre système intelligent de gestion de maintenance !",
+    "description": "Optimisez l'efficacité de vos équipements avec l'IA : anticipez les pannes, réduisez les arrêts imprévus et assurez une maintenance préventive. Suivez les opérations en temps réel et prenez des décisions précises via une plateforme intuitive.🔧💡",
+    "login": "Se connecter",
+    "signup": "S'inscrire"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Mot de passe",
+    "submit": "Se connecter",
+    "error": "Email ou mot de passe incorrect"
+  },
+  "signup": {
+    "first_name": "Nom",
+    "last_name": "Prénom",
+    "numidentif": "Carte d'identité",
+    "numtel": "Numéro de téléphone",
+    "email": "Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmez le mot de passe",
+    "choose_photo": "choisir une photo",
+    "submit": "S'inscrire",
+    "error": {
+      "password_mismatch": "Les mots de passe ne correspondent pas",
+      "role_required": "Veuillez sélectionner un rôle"
+    }
+  },
+  "role_selection": {
+    "logo_alt": "Logo de l'entreprise",
+    "select_role_title": "Sélectionnez votre rôle",
+    "role_magasinier": "Magasinier",
+    "role_technicien": "Technicien",
+    "role_responsable": "Responsable",
+    "role_operateur": "Opérateur"
+  },
+  "profile": {
+    "profile_user": "Profil utilisateur",
+    "user_avatar": "Avatar de l'utilisateur",
+    "edit": "Modifier",
+    "username": "Nom d'utilisateur",
+    "role": "Rôle",
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "email": "Email",
+    "num_identif": "Numéro d'identification",
+    "num_tel": "Numéro de téléphone",
+    "save": "Enregistrer"
+  },
+  "settings": {
+    "title": "Paramètres de l'application",
+    "theme": "Thème",
+    "theme_options": {
+      "light": "☀️ Clair",
+      "dark": "🌙 Sombre",
+      "system": "🖥️ Système"
     },
-    "login": {
-      "email": "Email",
-      "password": "Mot de passe",
-      "submit": "Se connecter",
-      "error": "Email ou mot de passe incorrect"
-    },
-    "signup": {
-      "first_name": "Nom",
-      "last_name": "Prénom",
-      "numidentif": "Carte d'identité",
-      "numtel": "Numéro de téléphone",
-      "email": "Email",
-      "password": "Mot de passe",
-      "confirmPassword": "Confirmez le mot de passe",
-      "choose_photo": "choisir une photo",
-      "submit": "S'inscrire",
-      "error": {
-        "password_mismatch": "Les mots de passe ne correspondent pas",
-        "role_required": "Veuillez sélectionner un rôle"
-      }
-    },
-    "role_selection": {
-      "logo_alt": "Logo de l'entreprise",
-      "select_role_title": "Sélectionnez votre rôle",
-      "role_magasinier": "Magasinier",
-      "role_technicien": "Technicien",
-      "role_responsable": "Responsable",
-      "role_operateur": "Opérateur"
-    },
-    "profile": {
-      "profile_user": "Profil utilisateur",
-      "user_avatar": "Avatar de l'utilisateur",
-      "edit": "Modifier",
-      "username": "Nom d'utilisateur",
-      "role": "Rôle",
-      "first_name": "Prénom",
-      "last_name": "Nom",
-      "email": "Email",
-      "num_identif": "Numéro d'identification",
-      "num_tel": "Numéro de téléphone",
-      "save": "Enregistrer"
-    },
-    "settings": {
-      "title": "Paramètres de l'application",
-      "theme": "Thème",
-      "theme_options": {
-        "light": "☀️ Clair",
-        "dark": "🌙 Sombre",
-        "system": "🖥️ Système"
-      },
-      "language": "Langue",
-      "language_options": {
-        "ar": "🇸🇦 Arabe",
-        "fr": "🇫🇷 Français",
-        "en": "🇬🇧 Anglais"
-      }
-    },
-    "stock": {
-      "title": "Liste des Stocks",
-      "id": "ID du Stock",
-      "capacity": "Capacité",
-      "location": "Emplacement",
-      "pieces": "Pièces",
-      "actions": "Actions",
-      "edit": "Modifier",
-      "delete": "Supprimer",
-      "add": "Ajouter",
-      "save": "Enregistrer",
-      "cancel": "Annuler",
-      "confirm_delete": "Êtes-vous sûr ?",
-      "delete_confirmation": "Voulez-vous vraiment supprimer ce stock ?"
-    },
-    "header" :{
-      "dashboard": "Tableau de bord",
-      "machine": "Machine",
-      "maintenance": "Maintenance",
-      "stock": "Stock",
-      "rapport": "Rapport",
-      "users": "Utilisateurs",
-      "guest": "Invité",
-      "profile": "Profil",
-      "setting": "Paramètres",
-      "logout": "Déconnexion"
-    },
-    "searchbar":{
-      "search_placeholder": "Rechercher..."
-    },
-    "warehouse": {
-      "stock": "Stock",
-      "quantity_total": "Quantité totale",
-      "quantity_used": "Quantité utilisée",
-      "unused_quantity": "Quantité libre",
-      "add_button": "Ajouter un nouvel entrepôt",
-      "edit_title": "Modifier",
-      "delete_title": "Supprimer",
-      "delete_confirm": "Êtes-vous sûr de vouloir supprimer cet entrepôt?",
-      "delete_button": "Supprimer",
-      "cancel_button": "Annuler"
-    },
-    "add_store_modal": {
-      "title": "Ajouter un magasin",
-      "store_name": "Nom du magasin",
-      "store_content": "Contenu du magasin",
-      "quantity_total": "Quantité totale",
-      "add_button": "Ajouter",
-      "cancel_button": "Annuler",
-      "error_failed": "Échec de l'ajout du magasin",
-      "error_occurred": "Une erreur s'est produite lors de l'ajout du magasin"
-    },
-    "edit_store_modal": {
-        "title": "Modifier le magasin",
-        "store_name": "Nom du magasin",
-        "store_content": "Contenu du magasin",
-        "quantity_total": "Quantité totale",
-        "quantity_used": "Quantité utilisée",
-        "quantity_free": "Quantité libre",
-        "save_button": "Enregistrer",
-        "cancel_button": "Annuler",
-        "success_message": "Magasin mis à jour avec succès",
-        "error_failed": "Échec de la mise à jour du magasin",
-        "error_occurred": "Une erreur s'est produite lors de la mise à jour du magasin"
-    },
-    "delete_store_modal": {
-      "title": "Attention !!!",
-      "confirm_message": "Êtes-vous sûr de vouloir supprimer ce magasin ?",
-      "warning_message": "Assurez-vous que votre décision est correcte car vous perdrez définitivement toutes les informations stockées dans le magasin,",
-      "confirm_prompt": "êtes-vous sûr ? Si vous êtes sûr,",
-      "type_instruction": "tapez le nom du magasin quatre fois dans le champ",
-      "space_note": "(séparés par des espaces)",
-      "placeholder": "ex. : nomMagasin nomMagasin nomMagasin nomMagasin",
-      "delete_button": "Supprimer",
-      "delete_loading": "Suppression en cours...",
-      "cancel_button": "Annuler",
-      "input_title": "Tapez le nom exactement 4 fois, séparé par des espaces",
-      "error_failed": "Échec de la suppression du magasin. Réessayez."
-    },
-    "stock_piece_page": {
-    "title": "Gestion des pièces de rechange dans le stock",
-    "search_placeholder": "Rechercher par nom ou référence...",
+    "language": "Langue",
+    "language_options": {
+      "ar": "🇸🇦 Arabe",
+      "fr": "🇫🇷 Français",
+      "en": "🇬🇧 Anglais"
+    }
+  },
+  "stock": {
+    "title": "Liste des Stocks",
+    "id": "ID du Stock",
+    "capacity": "Capacité",
+    "location": "Emplacement",
+    "pieces": "Pièces",
+    "actions": "Actions",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "add": "Ajouter",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "confirm_delete": "Êtes-vous sûr ?",
+    "delete_confirmation": "Voulez-vous vraiment supprimer ce stock ?"
+  },
+  "header": {
+    "dashboard": "Tableau de bord",
+    "machine": "Machine",
+    "maintenance": "Maintenance",
+    "stock": "Stock",
+    "rapport": "Rapport",
+    "users": "Utilisateurs",
+    "guest": "Invité",
+    "profile": "Profil",
+    "setting": "Paramètres",
+    "logout": "Déconnexion"
+  },
+  "searchbar": {
+    "search_placeholder": "Rechercher..."
+  },
+  "warehouse": {
+    "stock": "Stock",
+    "quantity_total": "Quantité totale",
+    "quantity_used": "Quantité utilisée",
+    "unused_quantity": "Quantité libre",
+    "add_button": "Ajouter un nouvel entrepôt",
+    "edit_title": "Modifier",
+    "delete_title": "Supprimer",
+    "delete_confirm": "Êtes-vous sûr de vouloir supprimer cet entrepôt?",
+    "delete_button": "Supprimer",
+    "cancel_button": "Annuler"
+  },
+  "add_store_modal": {
+    "title": "Ajouter un magasin",
+    "store_name": "Nom du magasin",
+    "store_content": "Contenu du magasin",
+    "quantity_total": "Quantité totale",
+    "add_button": "Ajouter",
+    "cancel_button": "Annuler",
+    "error_failed": "Échec de l'ajout du magasin",
+    "error_occurred": "Une erreur s'est produite lors de l'ajout du magasin"
+  },
+  "edit_store_modal": {
+    "title": "Modifier le magasin",
+    "store_name": "Nom du magasin",
+    "store_content": "Contenu du magasin",
+    "quantity_total": "Quantité totale",
+    "quantity_used": "Quantité utilisée",
+    "quantity_free": "Quantité libre",
+    "save_button": "Enregistrer",
+    "cancel_button": "Annuler",
+    "success_message": "Magasin mis à jour avec succès",
+    "error_failed": "Échec de la mise à jour du magasin",
+    "error_occurred": "Une erreur s'est produite lors de la mise à jour du magasin"
+  },
+  "delete_store_modal": {
+    "title": "Attention !!!",
+    "confirm_message": "Êtes-vous sûr de vouloir supprimer ce magasin ?",
+    "warning_message": "Assurez-vous que votre décision est correcte car vous perdrez définitivement toutes les informations stockées dans le magasin,",
+    "confirm_prompt": "êtes-vous sûr ? Si vous êtes sûr,",
+    "type_instruction": "tapez le nom du magasin quatre fois dans le champ",
+    "space_note": "(séparés par des espaces)",
+    "placeholder": "ex. : nomMagasin nomMagasin nomMagasin nomMagasin",
+    "delete_button": "Supprimer",
+    "delete_loading": "Suppression en cours...",
+    "cancel_button": "Annuler",
+    "input_title": "Tapez le nom exactement 4 fois, séparé par des espaces",
+    "error_failed": "Échec de la suppression du magasin. Réessayez."
+  },
+  "stock_piece_page": {
+    "title": "Gérer les pièces de rechange en stock",
     "reference": "Référence",
     "category": "Catégorie",
     "quantity": "Quantité",
     "unit_price": "Prix unitaire",
-    "no_pieces": "Aucune pièce de rechange dans ce stock",
-    "error_fetch": "Échec de la récupération des données des pièces",
-    "error_add": "Échec de l'ajout de la pièce de rechange",
-    "error_edit": "Échec de la modification de la pièce de rechange",
-    "error_delete": "Échec de la suppression de la pièce de rechange"
+    "condition": "État",
+    "no_pieces": "Aucune pièce de rechange disponible",
+    "filter_category": "Filtrer par catégorie",
+    "filter_quantity": "Filtrer par quantité",
+    "sort_by": "Trier par",
+    "sort_default": "Par défaut",
+    "sort_price_asc": "Prix (croissant)",
+    "sort_price_desc": "Prix (décroissant)",
+    "sort_quantity_asc": "Quantité (croissant)",
+    "sort_quantity_desc": "Quantité (décroissant)",
+    "enter_category": "Entrez la catégorie",
+    "enter_quantity": "Entrez la quantité",
+    "error_fetch": "Échec de la récupération des pièces de rechange",
+    "errors": {
+      "stock_id_missing": "L'ID du stock est manquant"
+    }
   },
   "add_stock_piece_modal": {
-    "title": "Ajouter une pièce de rechange au stock",
-    "piece_id": "Identifiant de la pièce",
+    "title": "Ajouter une pièce au stock",
+    "name": "Nom",
+    "reference": "Référence",
+    "category": "Catégorie",
+    "unit_price": "Prix unitaire",
     "quantity": "Quantité",
+    "image": "URL de l'image",
     "add_button": "Ajouter",
-    "cancel_button": "Annuler"
+    "cancel_button": "Annuler",
+    "no_file_selected": "No file selected"
   },
   "edit_stock_piece_modal": {
-    "title": "Modifier une pièce de rechange dans le stock",
-    "piece_id": "Identifiant de la pièce",
+    "title": "Modifier une pièce du stock",
+    "name": "Nom",
+    "reference": "Référence",
+    "category": "Catégorie",
+    "unit_price": "Prix unitaire",
     "quantity": "Quantité",
-    "save_button": "Enregistrer les modifications",
+    "image": "Image",
+    "image_note": "Veuillez télécharger des images claires avec un fond blanc, une vue de face, une vue de côté et une vue complète si possible.",
+    "invalid_image_type": "Type d'image invalide. Seuls JPEG, PNG, GIF sont autorisés.",
+    "image_too_large": "La taille de l'image est trop grande. La taille maximale est de 5 Mo.",
+    "invalid_image": "Le fichier téléchargé n'est pas une image valide ou est corrompu.",
+    "save_button": "Enregistrer",
     "cancel_button": "Annuler"
   },
   "delete_stock_piece_modal": {
-    "title": "Confirmer la suppression de la pièce",
-    "confirm_message": "Êtes-vous sûr de vouloir supprimer cette pièce du stock ?",
+    "title": "Confirmer la suppression de la pièce du stock",
+    "confirm_message": "Êtes-vous sûr de vouloir supprimer la pièce \"{{pieceName}}\" du stock ?",
     "warning_message": "Cette action est irréversible !",
     "confirm_prompt": "Pour confirmer, tapez le nom de la pièce quatre fois, séparé par des espaces.",
-    "type_instruction": "Tapez : nom de la pièce nom de la pièce nom de la pièce nom de la pièce",
-    "space_note": "Remarque : Assurez-vous qu'il y a un espace entre chaque mot",
+    "type_instruction": "Tapez : {{pieceName}} {{pieceName}} {{pieceName}} {{pieceName}}",
     "placeholder": "Tapez le nom de la pièce quatre fois...",
-    "input_title": "Vous devez taper le nom de la pièce quatre fois pour activer le bouton de suppression",
+    "input_aria_label": "Champ de saisie pour confirmer la suppression en tapant le nom de la pièce quatre fois",
+    "validation_message": "Vous devez taper le nom de la pièce quatre fois pour activer le bouton de suppression.",
+    "input_title": "Vous devez taper le nom de la pièce quatre fois pour activer le bouton de suppression.",
     "delete_button": "Supprimer",
-    "delete_loading": "Suppression en cours...",
-    "cancel_button": "Annuler"
+    "delete_loading": "Suppression...",
+    "cancel_button": "Annuler",
+    "delete_error": "Une erreur s'est produite lors de la suppression de la pièce du stock"
   }
-}  
+}

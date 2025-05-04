@@ -1,72 +1,44 @@
-"use client";
+import LoginClient from './LoginClient';
+import i18nServer, { getServerLanguage } from '../../../i18n-server';
+import i18next from "i18next";
+import fs from "fs/promises";
+import path from "path";
+import { cookies } from "next/headers";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import styles from "../../styles/SignupRegister.module.css";
-import { useAuth } from "@/app/context/AuthContext";
-import { login } from "@/app/services/authService";
-import { useTranslation } from "next-i18next"; // استيراد الترجمة
 
-export default function Login() {
-  const router = useRouter();
-  const [error, setError] = useState<string | null>(null);
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { setUser } = useAuth();
-  const { t } = useTranslation("common"); // استخدام الترجمة من ملف common.json
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    if (name === "email") setEmail(value);
-    if (name === "password") setPassword(value);
+async function initI18n(lng: string = "fr") {
+  const localesPath = path.join(process.cwd(), "public", "locales");
+  const resources = {
+    en: {
+      common: JSON.parse(
+        await fs.readFile(path.join(localesPath, "en", "common.json"), "utf-8")
+      ),
+    },
+    fr: {
+      common: JSON.parse(
+        await fs.readFile(path.join(localesPath, "fr", "common.json"), "utf-8")
+      ),
+    },
+    ar: {
+      common: JSON.parse(
+        await fs.readFile(path.join(localesPath, "ar", "common.json"), "utf-8")
+      ),
+    },
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const token = await login(email, password);
-      setUser({ token: token.access });
-      router.push('/pages/dashboard'); // بعد النجاح ننتقل إلى صفحة dashboard
-    } catch (error) {
-      console.error('Login failed:', error);
-      setError(t("login.error")); // ترجمة رسالة الخطأ
-    }
-  };
+  await i18next.init({
+    lng,
+    fallbackLng: "fr",
+    supportedLngs: ["en", "fr", "ar"],
+    ns: ["common"],
+    defaultNS: "common",
+    resources,
+  });
+}
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.blk}>
-        <div className={styles.background}>
-          <header className={styles.logo}>
-            <img src="/images/logo.svg" alt={t("home.logo_alt")} width="193.1" height="82" /> {/* ترجمة النص البديل للصورة */}
-          </header>
-          <div className={styles.formContainer}>
-            {error && <p className={styles.error}>{error}</p>}
-            <form onSubmit={handleSubmit} className={styles.form}>
-              <input
-                type="email"
-                name="email"
-                placeholder={t("login.email")} // ترجمة النص داخل الحقل
-                className={styles.inputField}
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="password"
-                name="password"
-                placeholder={t("login.password")} // ترجمة النص داخل الحقل
-                className={styles.inputField}
-                onChange={handleChange}
-                required
-              />
-              <button type="submit" className={styles.submitButton}>
-                {t("login.submit")} {/* ترجمة زر تسجيل الدخول */}
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+
+export default async function Login() {
+  const lng = await getServerLanguage();
+  await i18nServer.changeLanguage(lng);
+  return <LoginClient lng={lng} />;
 }

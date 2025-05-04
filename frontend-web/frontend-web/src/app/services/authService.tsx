@@ -17,6 +17,7 @@ export const login = async (email: string, password: string) => {
 
   if (data.access && data.refresh) {
     setCookie('access_token', data.access, 1); // خزّن التوكن في الكوكي
+    setCookie('refresh_token', data.refresh, 7); // افتراض أن الـ refresh token صالح لمدة 7 أيام
     return data;
   }
 
@@ -25,50 +26,83 @@ export const login = async (email: string, password: string) => {
 
 // تسجيل الخروج
 export const logout = async () => {
-  await fetch('http://127.0.0.1:8000/api/logout/', {
-    method: 'POST',
-    credentials: 'include',
-  });
-  localStorage.removeItem("user");
+  try {
+    await fetch('http://127.0.0.1:8000/api/logout/', {
+      method: 'POST',
+      credentials: 'include',
+    });
+  } catch (error) {
+    console.error("Error during logout request:", error);
+  } finally {
+    // إزالة جميع الكوكيز المتعلقة بالمصادقة
+    setCookie('access_token', '', -1);
+    setCookie('refresh_token', '', -1);
+    setCookie('sessionid', '', -1); // حذف كوكي الجلسة
+    localStorage.removeItem("user");
+  }
 };
 
 // جلب حالة المصادقة
 export const getAuthStatus = async () => {
-  
-  const response = await fetch('http://127.0.0.1:8000/api/status/', {
-    method: 'GET',
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-  });
+  const accessToken = getCookie('access_token');
+  if (!accessToken) {
+    return null; // إذا لم يكن هناك توكن، لا داعي لاستدعاء الـ API
+  }
 
-  const data = await response.json();
-  return data.user || null;
+  try {
+    const response = await fetch('http://127.0.0.1:8000/api/status/', {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${accessToken}`,
+      },
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch auth status');
+    }
+
+    const data = await response.json();
+    return data.user || null;
+  } catch (error) {
+    console.error("Error fetching auth status:", error);
+    return null;
+  }
 };
 
 // جلب بيانات المستخدم
 export const getUser = async () => {
   try {
-    const user = await getAuthStatus(); // إعادة استخدام getAuthStatus
+    const user = await getAuthStatus();
     console.log("User data:", user);
     return user;
   } catch (error) {
     console.error("Error fetching user data:", error);
-    return null; // إذا حدث خطأ، أعد null
+    return null;
   }
 };
 
-
 interface User {
   id: number;
-  // Add other properties of the user object as needed
+  username: string;
+  first_name: string;
+  last_name: string;
+  role: string;
+  email: string;
+  numidentif: string;
+  numtel: string;
+  image: string | null;
 }
 
 export async function updateUser(updatedUser: User, formData: FormData) {
   try {
+    const accessToken = getCookie('access_token');
     const response = await fetch(`http://127.0.0.1:8000/utilisateurs/${updatedUser.id}/`, {
       method: "PUT",
+      headers: {
+        "Authorization": `Bearer ${accessToken}`,
+      },
       credentials: "include",
       body: formData,
     });
@@ -86,4 +120,3 @@ export async function updateUser(updatedUser: User, formData: FormData) {
     throw error;
   }
 }
-

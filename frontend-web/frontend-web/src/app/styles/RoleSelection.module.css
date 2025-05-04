@@ -33,6 +33,18 @@
     width: 150px; /* التحكم في حجم الشعار */
     height: auto;
   }
+
+  .title {
+    position: absolute;
+    top: 100px;
+    left: 620px;
+    z-index: 3;
+    font-size: 36px;
+    color: white;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
   
   .rolesContainer {
     display: flex;
@@ -75,3 +87,32 @@
     color: white;
   }
   
+  .languageFooter {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    z-index: 4;
+    right: 20px;
+    bottom: 10px;
+    position: absolute;
+  
+  }
+  
+  .languageButton {
+    background: none;
+    border: none;
+    color: var(--text1-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .languageButton:hover {
+    color: var(--text1h-color);
+  }
+  
+  .languageButton.active {
+    color: var(--text2-color);
+    font-weight: bold;
+  }

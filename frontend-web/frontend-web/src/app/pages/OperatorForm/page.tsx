@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "../../styles/OperatForm.module.css"; 
+import { body } from "framer-motion/client";
 
 const OperatorForm = () => {
   const [showAI, setShowAI] = useState(false);
@@ -51,6 +52,7 @@ const OperatorForm = () => {
   };
 
   return (
+    <div className={styles.body}>
     <div className={styles["rapport-container"]}>
       <form onSubmit={handleSubmit} className={styles.formContainer}>
         <h2 className={styles.title}>Rapport de l'opérateur</h2>
@@ -116,6 +118,7 @@ const OperatorForm = () => {
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 };

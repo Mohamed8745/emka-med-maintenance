@@ -3,7 +3,8 @@
 import { ReactNode, useEffect } from "react";
 import { AuthProvider } from "./context/AuthContext";
 import ThemeInitializer from "./components/ThemeInitializer";
-import i18n from "../../i18n";
+import i18n from "../i18n";
+import { LanguageProvider } from "./context/LanguageContext";
 
 interface ClientWrapperProps {
   children: ReactNode;
@@ -16,8 +17,10 @@ export default function ClientWrapper({ children }: ClientWrapperProps) {
 
   return (
     <AuthProvider>
-      <ThemeInitializer />
-      {children}
+      <LanguageProvider>
+        <ThemeInitializer />
+        {children}
+      </LanguageProvider>
     </AuthProvider>
   );
 }

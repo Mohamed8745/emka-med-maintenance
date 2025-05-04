@@ -1,185 +1,213 @@
 {
-    "home": {
-      "logo_alt": "Company Logo",
-      "title": "Welcome to our intelligent maintenance management system!",
-      "description": "Optimize your equipment efficiency with AI: anticipate failures, reduce unexpected downtime and ensure preventive maintenance. Track operations in real time and make precise decisions through an intuitive platform.🔧💡",
-      "login": "Log in",
-      "signup": "Sign up"
+  "home": {
+    "logo_alt": "Company Logo",
+    "title": "Welcome to our intelligent maintenance management system!",
+    "description": "Optimize your equipment efficiency with AI: anticipate failures, reduce unexpected downtime and ensure preventive maintenance. Track operations in real time and make precise decisions through an intuitive platform.🔧💡",
+    "login": "Log in",
+    "signup": "Sign up"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "submit": "Login",
+    "error": "Incorrect email or password"
+  },
+  "signup": {
+    "first_name": "First name",
+    "last_name": "Last name",
+    "numidentif": "ID card",
+    "numtel": "Phone number",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "choose_photo": "Choose a photo",
+    "submit": "Sign up",
+    "error": {
+      "password_mismatch": "Passwords do not match",
+      "role_required": "Please select user role"
+    }
+  },
+  "role_selection": {
+    "logo_alt": "Company Logo",
+    "select_role_title": "Select Your Role",
+    "role_magasinier": "Storekeeper",
+    "role_technicien": "Technician",
+    "role_responsable": "Manager",
+    "role_operateur": "Operator"
+  },
+  "profile": {
+    "profile_user": "Profile User",
+    "user_avatar": "User Avatar",
+    "edit": "Edit",
+    "username": "Username",
+    "role": "Role",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email",
+    "num_identif": "Identification Number",
+    "num_tel": "Phone Number",
+    "save": "Save"
+  },
+  "settings": {
+    "title": "App Settings",
+    "theme": "Theme",
+    "theme_options": {
+      "light": "☀️ Light",
+      "dark": "🌙 Dark",
+      "system": "🖥️ System"
     },
-    "login": {
-      "email": "Email",
-      "password": "Password",
-      "submit": "Login",
-      "error": "Incorrect email or password"
-    },
-    "signup": {
-      "first_name": "First name",
-      "last_name": "Last name",
-      "numidentif": "ID card",
-      "numtel": "Phone number",
-      "email": "Email",
-      "password": "Password",
-      "confirmPassword": "Confirm password",
-      "choose_photo": "Choose a photo",
-      "submit": "Sign up",
-      "error": {
-        "password_mismatch": "Passwords do not match",
-        "role_required": "Please select user role"
-      }
-    },
-    "role_selection": {
-      "logo_alt": "Company Logo",
-      "select_role_title": "Select Your Role",
-      "role_magasinier": "Storekeeper",
-      "role_technicien": "Technician",
-      "role_responsable": "Manager",
-      "role_operateur": "Operator"
-    },
-    "profile": {
-      "profile_user": "Profile User",
-      "user_avatar": "User Avatar",
-      "edit": "Edit",
-      "username": "Username",
-      "role": "Role",
-      "first_name": "First Name",
-      "last_name": "Last Name",
-      "email": "Email",
-      "num_identif": "Identification Number",
-      "num_tel": "Phone Number",
-      "save": "Save"
-    },
-    "settings": {
-      "title": "App Settings",
-      "theme": "Theme",
-      "theme_options": {
-        "light": "☀️ Light",
-        "dark": "🌙 Dark",
-        "system": "🖥️ System"
-      },
-      "language": "Language",
-      "language_options": {
-        "ar": "🇸🇦 Arabic",
-        "fr": "🇫🇷 French",
-        "en": "🇬🇧 English"
-      }
-    },
-    "stock": {
-      "title": "Stock List",
-      "id": "Stock ID",
-      "capacity": "Capacity",
-      "location": "Location",
-      "pieces": "Pieces",
-      "actions": "Actions",
-      "edit": "Edit",
-      "delete": "Delete",
-      "add": "Add",
-      "save": "Save",
-      "cancel": "Cancel",
-      "confirm_delete": "Are you sure?",
-      "delete_confirmation": "Do you really want to delete this stock?"
-    },
-    "header" :{
-      "dashboard": "Dashboard",
-      "machine": "Machine",
-      "maintenance": "Maintenance",
-      "stock": "Stock",
-      "rapport": "Report",
-      "users": "Users",
-      "guest": "Guest",
-      "profile": "Profile",
-      "setting": "Settings",
-      "logout": "Logout"
-    },
-    "searchbar":{
-      "search_placeholder": "Search..."
-    },
-    "warehouse":{
-      "stock": "Stock",
-      "quantity_total": "Total Quantity",
-      "quantity_used": "Used Quantity",
-      "unused_quantity": "Free Quantity",
-      "add_button": "Add New Warehouse",
-      "edit_title": "Edit",
-      "delete_title": "Delete",
-      "delete_confirm": "Are you sure you want to delete this warehouse?",
-      "delete_button": "Delete",
-      "cancel_button": "Cancel"
-    },
-    "add_store_modal": {
-      "title": "Add Store",
-      "store_name": "Store name",
-      "store_content": "Store content",
-      "quantity_total": "Quantity total",
-      "add_button": "Add",
-      "cancel_button": "Cancel",
-      "error_failed": "Failed to add the store",
-      "error_occurred": "An error occurred while adding the store"
-    },
-    "edit_store_modal": {
-      "title": "Edit Store",
-      "store_name": "Store name",
-      "store_content": "Store content",
-      "quantity_total": "Total Quantity",
-      "quantity_used": "Used Quantity",
-      "quantity_free": "Free Quantity",
-      "save_button": "Save",
-      "cancel_button": "Cancel",
-      "success_message": "Store updated successfully",
-      "error_failed": "Failed to update the store",
-      "error_occurred": "An error occurred while updating the store"
-    },
-    "delete_store_modal": {
-      "title": "Warning!!!",
-      "confirm_message": "Are you sure you want to delete this store?",
-      "warning_message": "Make sure your decision is correct because you will lose all the information stored in the store forever,",
-      "confirm_prompt": "are you sure? If you are sure,",
-      "type_instruction": "type the name of the store four times in the input",
-      "space_note": "(separated by spaces)",
-      "placeholder": "e.g. storeName storeName storeName storeName",
-      "delete_button": "Delete",
-      "delete_loading": "Deleting...",
-      "cancel_button": "Cancel",
-      "input_title": "Type the name exactly 4 times separated by spaces",
-      "error_failed": "Failed to delete the store. Try again."
-    },
-    "stock_piece_page": {
+    "language": "Language",
+    "language_options": {
+      "ar": "🇸🇦 Arabic",
+      "fr": "🇫🇷 French",
+      "en": "🇬🇧 English"
+    }
+  },
+  "stock": {
+    "title": "Stock List",
+    "id": "Stock ID",
+    "capacity": "Capacity",
+    "location": "Location",
+    "pieces": "Pieces",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm_delete": "Are you sure?",
+    "delete_confirmation": "Do you really want to delete this stock?"
+  },
+  "header": {
+    "dashboard": "Dashboard",
+    "machine": "Machine",
+    "maintenance": "Maintenance",
+    "stock": "Stock",
+    "rapport": "Report",
+    "users": "Users",
+    "guest": "Guest",
+    "profile": "Profile",
+    "setting": "Settings",
+    "logout": "Logout"
+  },
+  "searchbar": {
+    "search_placeholder": "Search..."
+  },
+  "warehouse": {
+    "stock": "Stock",
+    "quantity_total": "Total Quantity",
+    "quantity_used": "Used Quantity",
+    "unused_quantity": "Free Quantity",
+    "add_button": "Add New Warehouse",
+    "edit_title": "Edit",
+    "delete_title": "Delete",
+    "delete_confirm": "Are you sure you want to delete this warehouse?",
+    "delete_button": "Delete",
+    "cancel_button": "Cancel"
+  },
+  "add_store_modal": {
+    "title": "Add Store",
+    "store_name": "Store name",
+    "store_content": "Store content",
+    "quantity_total": "Quantity total",
+    "add_button": "Add",
+    "cancel_button": "Cancel",
+    "error_failed": "Failed to add the store",
+    "error_occurred": "An error occurred while adding the store"
+  },
+  "edit_store_modal": {
+    "title": "Edit Store",
+    "store_name": "Store name",
+    "store_content": "Store content",
+    "quantity_total": "Total Quantity",
+    "quantity_used": "Used Quantity",
+    "quantity_free": "Free Quantity",
+    "save_button": "Save",
+    "cancel_button": "Cancel",
+    "success_message": "Store updated successfully",
+    "error_failed": "Failed to update the store",
+    "error_occurred": "An error occurred while updating the store"
+  },
+  "delete_store_modal": {
+    "title": "Warning!!!",
+    "confirm_message": "Are you sure you want to delete this store?",
+    "warning_message": "Make sure your decision is correct because you will lose all the information stored in the store forever,",
+    "confirm_prompt": "are you sure? If you are sure,",
+    "type_instruction": "type the name of the store four times in the input",
+    "space_note": "(separated by spaces)",
+    "placeholder": "e.g. storeName storeName storeName storeName",
+    "delete_button": "Delete",
+    "delete_loading": "Deleting...",
+    "cancel_button": "Cancel",
+    "input_title": "Type the name exactly 4 times separated by spaces",
+    "error_failed": "Failed to delete the store. Try again."
+  },
+  "stock_piece_page": {
     "title": "Manage Spare Parts in Stock",
-    "search_placeholder": "Search by name or reference...",
     "reference": "Reference",
     "category": "Category",
     "quantity": "Quantity",
     "unit_price": "Unit Price",
-    "no_pieces": "No spare parts in this stock",
-    "error_fetch": "Failed to fetch spare parts data",
+    "condition": "Condition",
+    "no_pieces": "No spare parts available",
+    "filter_category": "Filter by Category",
+    "filter_quantity": "Filter by Quantity",
+    "sort_by": "Sort by",
+    "sort_default": "Default",
+    "sort_price_asc": "Price (Ascending)",
+    "sort_price_desc": "Price (Descending)",
+    "sort_quantity_asc": "Quantity (Ascending)",
+    "sort_quantity_desc": "Quantity (Descending)",
+    "enter_category": "Enter category",
+    "enter_quantity": "Enter quantity",
+    "error_fetch": "Failed to fetch spare parts",
     "error_add": "Failed to add spare part",
-    "error_edit": "Failed to edit spare part",
-    "error_delete": "Failed to delete spare part"
+    "error_update": "Failed to update spare part",
+    "error_delete": "Failed to delete spare part",
+    "errors": {
+      "stock_id_missing": "Stock ID is missing"
+    }
   },
   "add_stock_piece_modal": {
-    "title": "Add Spare Part to Stock",
-    "piece_id": "Piece ID",
+    "title": "Add Stock Piece",
+    "name": "Name",
+    "reference": "Reference",
+    "category": "Category",
+    "unit_price": "Unit Price",
     "quantity": "Quantity",
+    "image": "Image URL",
     "add_button": "Add",
-    "cancel_button": "Cancel"
+    "cancel_button": "Cancel",
+    "no_file_selected": "No file selected"
   },
   "edit_stock_piece_modal": {
-    "title": "Edit Spare Part in Stock",
-    "piece_id": "Piece ID",
+    "title": "Edit Stock Piece",
+    "name": "Name",
+    "reference": "Reference",
+    "category": "Category",
+    "unit_price": "Unit Price",
     "quantity": "Quantity",
-    "save_button": "Save Changes",
+    "image": "Image",
+    "image_note": "Please upload clear images with a white background, a front view, a side view, and a full view if possible.",
+    "invalid_image_type": "Invalid image type. Only JPEG, PNG, GIF are allowed.",
+    "image_too_large": "Image size is too large. Maximum size is 5MB.",
+    "invalid_image": "The uploaded file is not a valid image or is corrupted.",
+    "save_button": "Save",
     "cancel_button": "Cancel"
   },
   "delete_stock_piece_modal": {
-    "title": "Confirm Spare Part Deletion",
-    "confirm_message": "Are you sure you want to delete this spare part from the stock?",
+    "title": "Confirm Deletion of Stock Piece",
+    "confirm_message": "Are you sure you want to delete the stock piece \"{{pieceName}}\"?",
     "warning_message": "This action cannot be undone!",
-    "confirm_prompt": "To confirm, type the piece name four times, separated by spaces.",
-    "type_instruction": "Type: piece name piece name piece name piece name",
-    "space_note": "Note: Ensure there is a space between each word",
-    "placeholder": "Type the piece name four times...",
-    "input_title": "You must type the piece name four times to enable the delete button",
+    "confirm_prompt": "To confirm, type the name of the piece four times, separated by spaces.",
+    "type_instruction": "Type: {{pieceName}} {{pieceName}} {{pieceName}} {{pieceName}}",
+    "placeholder": "Type the name of the piece four times...",
+    "input_aria_label": "Input field to confirm deletion by typing the name of the piece four times",
+    "validation_message": "You must type the name of the piece four times to enable the delete button.",
+    "input_title": "You must type the name of the piece four times to activate the delete button.",
     "delete_button": "Delete",
     "delete_loading": "Deleting...",
-    "cancel_button": "Cancel"
+    "cancel_button": "Cancel",
+    "delete_error": "An error occurred while deleting the stock piece"
   }
-  }
+}

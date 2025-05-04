@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import styles from "./../styles/header.module.css";
-import { useTranslation } from "next-i18next"; // استيراد الترجمة
+import { useTranslation } from "next-i18next";
+import { Search } from "lucide-react";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
@@ -11,7 +12,7 @@ interface SearchBarProps {
 
 export default function SearchBar({ onSearch, placeholder }: SearchBarProps) {
   const [query, setQuery] = useState("");
-  const { t } = useTranslation("common"); // استخدام الترجمة من ملف common.json
+  const { t } = useTranslation("common");
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -19,13 +20,15 @@ export default function SearchBar({ onSearch, placeholder }: SearchBarProps) {
   };
 
   return (
-    <input
-      type="text"
-      value={query}
-      onChange={handleSearch}
-      placeholder={placeholder || t("searchbar.search_placeholder")} // ترجمة النص الافتراضي
-      className={styles.searchBar}
-    />
+    <div className={styles.searchBarContainer}>
+      <Search size={18} className={styles.searchIcon} />
+      <input
+        type="text"
+        value={query}
+        onChange={handleSearch}
+        placeholder={placeholder || t("searchbar.search_placeholder")}
+        className={styles.searchBar}
+      />
+    </div>
   );
 }
-

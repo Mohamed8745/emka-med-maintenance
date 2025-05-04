@@ -3,6 +3,7 @@ import HomeClient from "./HomeClient";
 import i18next from "i18next";
 import fs from "fs/promises";
 import path from "path";
+import { cookies } from "next/headers";
 
 // تهيئة i18next للخادم
 async function initI18n(lng: string = "fr") {
@@ -36,12 +37,11 @@ async function initI18n(lng: string = "fr") {
 }
 
 // توليد البيانات الوصفية
-export async function generateMetadata({
-  params = { lng: "fr" },
-}: {
-  params?: { lng: string };
-}): Promise<Metadata> {
-  await initI18n(params.lng);
+export async function generateMetadata(): Promise<Metadata> {
+  const cookieStore = await cookies();
+  const savedLang = cookieStore.get("i18next")?.value;
+  const lng = savedLang && ["en", "fr", "ar"].includes(savedLang) ? savedLang : "fr";
+  await initI18n(lng);
   const t = i18next.t.bind(i18next);
   return {
     title: t("home.title"),

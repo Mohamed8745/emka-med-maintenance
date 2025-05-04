@@ -47,3 +47,43 @@ class RapportGenererPDFView(APIView):
             return Response({"message": "PDF généré avec succès (simulation)."})
         except Rapport.DoesNotExist:
             return Response({"error": "Rapport non trouvé."}, status=404)
+        
+from django.http import JsonResponse
+from stock.models import PieceDeRechange
+
+import os
+from django.http import JsonResponse
+from django.conf import settings
+from stock.models import PieceDeRechange
+
+def refresh_images(request):
+    if request.method == 'GET':
+        updated = 0
+        for p in PieceDeRechange.objects.exclude(image=''):
+            try:
+                image_path = p.image.path
+            except ValueError:
+                print(f"⛔ No image path for: {p.reference}")
+                continue
+            except Exception as e:
+                print(f"⚠️ Error accessing image path for {p.reference}: {e}")
+                continue
+
+            if not os.path.isfile(image_path):
+                print(f"⛔ File not found: {image_path}")
+                continue
+
+            try:
+                # إعادة الحفظ لتفعيل معالجة الصورة
+                original = p.image
+                p.image = None
+                p.save(update_fields=["image"])
+                p.image = original
+                p.save()
+                updated += 1
+                print(f"✅ Updated: {p.reference}")
+            except Exception as e:
+                print(f"❌ Failed to update {p.reference}: {e}")
+                continue
+
+        return JsonResponse({'status': 'done', 'updated': updated})

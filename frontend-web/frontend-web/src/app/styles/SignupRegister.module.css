@@ -202,3 +202,33 @@
   background: rgba(19, 0, 0, 0.147);
   color: rgb(255, 255, 255);
 }
+
+.languageFooter {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  z-index: 4;
+  right: 20px;
+  bottom: 10px;
+  position: absolute;
+
+}
+
+.languageButton {
+  background: none;
+  border: none;
+  color: var(--text1-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.languageButton:hover {
+  color: var(--text1h-color);
+}
+
+.languageButton.active {
+  color: var(--text2-color);
+  font-weight: bold;
+}
