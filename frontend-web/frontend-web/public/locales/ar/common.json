@@ -206,4 +206,47 @@
     "cancel_button": "إلغاء",
     "delete_error": "حدث خطأ أثناء حذف القطعة من المخزون"
   }
-}
+
+  "operator_form": {
+    "title": "تقرير المُشغّل",
+    "description_placeholder": "أدخل الوصف",
+    "attach_file": "إرفاق ملف",
+    "choose_file": "اختر ملفًا",
+    "no_file": "لم يتم اختيار ملف",
+    "submit": "إرسال التقرير",
+    "ai_analysis": "تحليل الذكاء الاصطناعي",
+    "status_open": "مفتوح",
+    "status_processing": "قيد المعالجة",
+    "status_resolved": "تم الحل",
+    "success_message": "تم إرسال التقرير بنجاح.",
+    "error_message": "فشل في إرسال التقرير."
+  },
+  
+  
+    "techni_form": {
+      "title": "تعديل مهمة",
+      "description": "الوصف",
+      "technician": "الفني المسؤول",
+      "start_date": "تاريخ البدء",
+      "end_date": "تاريخ الانتهاء",
+      "assigned_to": "تم إسنادها إلى",
+      "status": "الحالة",
+      "status_pending": "في الانتظار",
+      "status_in_progress": "قيد التنفيذ",
+      "status_done": "منجزة",
+      "submit": "حفظ المهمة",
+      "success_message": "✅ تم حفظ المهمة بنجاح",
+      "error_message": "❌ حدث خطأ أثناء الحفظ",
+      "ai_analysis": "تحليل بالذكاء الاصطناعي",
+      "ai_placeholder": "هنا ستظهر نتائج التحليل"
+    },
+      "rapport_form": {
+        "type_placeholder": "نوع التقرير...",
+        "description_placeholder": "وصف التقرير...",
+        "send": "إرسال التقرير",
+        "success": "✅ تم إرسال التقرير بنجاح!",
+        "error": "❌ فشل إرسال التقرير."
+      
+    }
+
+  }

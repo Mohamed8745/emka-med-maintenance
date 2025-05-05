@@ -1,65 +1,101 @@
-.body {
-    background-color: #f5f5f5;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.inputRow {
+  display: flex;
+  margin-bottom: 10px;
 }
 
-.rapport-container {
-    background-color: #dce0e5;
-    padding: 20px;
-    width: 482px;
-    height: 573px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.leftAlign {
+  justify-content: flex-start;
 }
 
-.input-row {
-    
-    justify-content: space-between;
-    margin-bottom: 20px;
+.rightAlign {
+  justify-content: flex-end;
 }
 
-.input-text {
-    width: 30%;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
+.smallInput {
+  width: auto;
+  min-width: 150px;
+  max-width: 200px;
+  font-size: 14px;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  border: 1px solid var(--bg1h-color);
+  border-radius: 4px;
+  color: var(--text-color);
+}
+
+.pageWrapper {
+  font-family: "Jua", sans-serif;
+  width: 400px;
+  height: 490px;
+  padding: 30px;
+  background-color: var(--bg1-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+}
+
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.report-date {
+  font-size: 16px;
+  text-align: right;
+  color: var(--text2-color);
+}
+
+.rapportContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .textarea {
-    width: 438px;
-    height:358px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 5px;
+  padding: 12px;
+  border: 1px solid var(--bg1h-color);
+  border-radius: 4px;
+  font-size: 16px;
+  height: 350px;
+  resize: vertical;
+  width: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  box-sizing: border-box;
 }
-.input1{
-    text-align: right;
-}
+
 .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
-.identity {
-    font-size: 10px;
-    color: #666;
+.submitButton {
+  padding: 10px 25px;
+  background-color: var(--bg2-color);
+  color: var(--text1-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-family: "Jua", sans-serif;
 }
 
-.submit-button {
-    background-color: #3399cc;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+.submitButton:hover {
+  background-color: var(--bg2h-color);
 }
 
-.submit-button:hover {
-    background-color: #287ba3;
+.inputText {
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border: 1px solid var(--bg1h-color);
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }

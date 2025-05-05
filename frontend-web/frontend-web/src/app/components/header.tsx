@@ -9,7 +9,7 @@ import SettingModal from "../components/SettingModal";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import stockService from "../services/stockService";
-import { ChevronDown, ChevronRight, Home, Package, FileText, Wrench, Users, Box, Layers, Settings, LogOut } from "lucide-react";
+import { ChevronDown, ChevronRight, Home, Package, FileText, Wrench, Users, Box, Layers, Settings, LogOut ,Paperclip,ShieldAlert  } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
 interface HeaderProps {
@@ -43,6 +43,7 @@ interface User {
 }
 
 const getNavItems = (role: string, t: any) => {
+
   const icons = {
     dashboard: <Home size={18} />,
     machine: <Wrench size={18} />,
@@ -50,6 +51,8 @@ const getNavItems = (role: string, t: any) => {
     stock: <Package size={18} />,
     rapport: <FileText size={18} />,
     user: <Users size={18} />,
+    tache: <Paperclip size={18} />,
+    problem: <ShieldAlert size={18} />,
   };
 
   const items = {
@@ -59,12 +62,15 @@ const getNavItems = (role: string, t: any) => {
       { title: t("header.maintenance"), id: "maintenance", icon: icons.maintenance },
       { title: t("header.stock"), id: "stock", icon: icons.stock },
       { title: t("header.rapport"), id: "rapport", icon: icons.rapport },
+      { title: t("header.TechnicianForm"), id: "tache" , icon: icons.tache},
+
     ],
     Operateur: [
       { title: t("header.dashboard"), id: "dashboard", icon: icons.dashboard },
       { title: t("header.machine"), id: "machine", icon: icons.machine },
       { title: t("header.maintenance"), id: "maintenance", icon: icons.maintenance },
       { title: t("header.rapport"), id: "rapport", icon: icons.rapport },
+      { title: t("header.OperatorForm"), id: "probleme" , icon: icons.problem },
     ],
     Admin: [
       { title: t("header.dashboard"), id: "dashboard", icon: icons.dashboard },
@@ -120,6 +126,8 @@ export default function Header({ translations, children }: HeaderProps) {
     fetchStocks();
   }, []);
 
+ 
+    
   const fetchUser = useCallback(async () => {
     try {
       setIsLoadingUser(true);

@@ -209,5 +209,43 @@
     "delete_loading": "Deleting...",
     "cancel_button": "Cancel",
     "delete_error": "An error occurred while deleting the stock piece"
+  },
+  "operator_form": {
+    "title": "Operator Report",
+    "description_placeholder": "Enter description",
+    "attach_file": "Attach a file",
+    "choose_file": "Choose file",
+    "no_file": "No file selected",
+    "submit": "Submit Report",
+    "ai_analysis": "AI Analysis",
+    "status_open": "Open",
+    "status_processing": "In progress",
+    "status_resolved": "Resolved",
+    "success_message": "Report submitted successfully.",
+    "error_message": "Failed to submit report."
+  },
+  "techni_form": {
+    "title": "Edit Task",
+    "description": "Description",
+    "technician": "Responsible Technician",
+    "start_date": "Start Date",
+    "end_date": "End Date",
+    "assigned_to": "Assigned To",
+    "status": "Status",
+    "status_pending": "Pending",
+    "status_in_progress": "In Progress",
+    "status_done": "Completed",
+    "submit": "Save Task",
+    "success_message": "✅ Task saved successfully!",
+    "error_message": "❌ An error occurred while saving the task.",
+    "ai_analysis": "AI Analysis",
+    "ai_placeholder": "AI module will appear here"
+  },
+    "rapport_form": {
+    "type_placeholder": "Report type...",
+    "description_placeholder": "Report description...",
+    "send": "Send Report",
+    "success": "✅ Report sent successfully!",
+    "error": "❌ Failed to send the report."
   }
 }
