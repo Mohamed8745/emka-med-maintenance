@@ -1,0 +1,10 @@
+# Gitignore for React Native
+frontend_mobile/node_modules/
+frontend_mobile/android/build/
+frontend_mobile/android/app/build/
+frontend_mobile/ios/build/
+frontend_mobile/.expo/
+*.log
+node_modules/
+__pycache__/
+*.pyc
