@@ -246,7 +246,57 @@
           "send": "Envoyer le rapport",
           "success": "✅ Rapport envoyé avec succès !",
           "error": "❌ Échec de l'envoi du rapport."
-        }
+        },
+        
+          "maintenance": {
+            "title": "Système de gestion de maintenance des machines",
+            "all_machines": "Afficher toutes les machines",
+            "new_tasks": "Nouvelles tâches",
+            "schedule": "Calendrier de maintenance",
+            "no_appointments": "Aucun rendez-vous de maintenance",
+            "machine": "Machine",
+            "date": "Date",
+            "time": "Heure",
+            "technician": "Technicien",
+            "status": "Statut",
+            "not_assigned": "Non assigné",
+            "task": "Tâche",
+            "priority": "Priorité",
+            "add_date": "Date d'ajout",
+            "actions": "Actions",
+            "convert": "Convertir en rendez-vous",
+            "delete": "Supprimer",
+            "no_tasks": "Aucune nouvelle tâche",
+            "loading": "Chargement des données..."
+          },
+          "machine": {
+            "machineManagement": "Gestion des Machines",
+            "addMachine": "Ajouter une Machine",
+            "machineName": "Nom de la Machine",
+            "machineType": "Type de Machine",
+            "status": "Statut",
+            "functional": "Fonctionnel",
+            "broken": "En Panne",
+            "inMaintenance": "En Maintenance",
+            "image": "Image",
+            "lastMaintenance": "Dernière Maintenance",
+            "add": "Ajouter",
+            "update": "Mettre à jour",
+            "cancel": "Annuler",
+            "delete": "Supprimer",
+            "loading": "Chargement",
+            "type": "Type",
+            "addedSuccessfully": "Machine ajoutée avec succès",
+            "updatedSuccessfully": "Machine mise à jour avec succès",
+            "deletedSuccessfully": "Machine supprimée avec succès",
+            "deleteConfirmation": "Êtes-vous sûr de vouloir supprimer cette machine?",
+            "loadError": "Erreur de chargement des machines",
+            "formSubmitError": "Erreur lors de la soumission du formulaire",
+            "deleteError": "Erreur lors de la suppression",
+            "updateMachine": "Mettre à jour la Machine",
+            "deleteMachine": "Supprimer la Machine"
+          }
+        
       
       
       

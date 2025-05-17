@@ -205,7 +205,7 @@
     "delete_loading": "جاري الحذف...",
     "cancel_button": "إلغاء",
     "delete_error": "حدث خطأ أثناء حذف القطعة من المخزون"
-  }
+  },
 
   "operator_form": {
     "title": "تقرير المُشغّل",
@@ -247,6 +247,56 @@
         "success": "✅ تم إرسال التقرير بنجاح!",
         "error": "❌ فشل إرسال التقرير."
       
-    }
+    },
+    
+      "maintenance": {
+        "title": "نظام إدارة صيانة الآلات",
+        "all_machines": "عرض جميع الآلات",
+        "new_tasks": "مهام جديدة",
+        "schedule": "جدول الصيانة",
+        "no_appointments": "لا توجد مواعيد صيانة",
+        "machine": "آلة",
+        "date": "تاريخ",
+        "time": "وقت",
+        "technician": "فني",
+        "status": "حالة",
+        "not_assigned": "غير معين",
+        "task": "مهمة",
+        "priority": "أولوية",
+        "add_date": "تاريخ الإضافة",
+        "actions": "إجراءات",
+        "convert": "تحويل إلى موعد",
+        "delete": "حذف",
+        "no_tasks": "لا توجد مهام جديدة",
+        "loading": "جاري تحميل البيانات..."
+      },
+      "machine": {
+        "machineManagement": "إدارة الآلات",
+        "addMachine": "إضافة آلة",
+        "machineName": "اسم الآلة",
+        "machineType": "نوع الآلة",
+        "status": "الحالة",
+        "functional": "تعمل",
+        "broken": "معطلة",
+        "inMaintenance": "قيد الصيانة",
+        "image": "الصورة",
+        "lastMaintenance": "آخر صيانة",
+        "add": "إضافة",
+        "update": "تحديث",
+        "cancel": "إلغاء",
+        "delete": "حذف",
+        "loading": "جاري التحميل",
+        "type": "النوع",
+        "addedSuccessfully": "تمت إضافة الآلة بنجاح",
+        "updatedSuccessfully": "تم تحديث الآلة بنجاح",
+        "deletedSuccessfully": "تم حذف الآلة بنجاح",
+        "deleteConfirmation": "هل أنت متأكد من رغبتك في حذف هذه الآلة؟",
+        "loadError": "خطأ في تحميل الآلات",
+        "formSubmitError": "خطأ في إرسال النموذج",
+        "deleteError": "خطأ في حذف الآلة",
+        "updateMachine": "تحديث الآلة",
+        "deleteMachine": "حذف الآلة"
+      }
+    
 
   }

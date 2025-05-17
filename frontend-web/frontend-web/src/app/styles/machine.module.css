@@ -1,0 +1,235 @@
+/* Reset and basic styles */
+.body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* Action buttons */
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn i {
+  font-size: 1rem;
+}
+
+.btnPrimary {
+  background-color: #3498db;
+  color: white;
+}
+
+.btnPrimary:hover {
+  background-color: #2980b9;
+}
+
+.btnSecondary {
+  background-color: #9b59b6;
+  color: white;
+}
+
+.btnSecondary:hover {
+  background-color: #8e44ad;
+}
+
+.btnDanger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btnDanger:hover {
+  background-color: #c0392b;
+}
+
+.btnCancel {
+  background-color: #bdc3c7;
+  color: #2c3e50;
+}
+
+.btnCancel:hover {
+  background-color: #95a5a6;
+}
+
+/* Machine card */
+.machineList {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.machineCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.machineCard:hover {
+  transform: translateY(-5px);
+}
+
+.machineImage img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.machineDetails {
+  padding: 1rem;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.detailLabel {
+  font-weight: 600;
+  color: #555;
+}
+
+.statusFunctional {
+  color: green;
+  font-weight: bold;
+}
+
+/* Modal styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  width: 90%;
+  max-width: 550px;
+  border-radius: 12px;
+  z-index: 1001;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.formContainer {
+  position: relative;
+}
+
+.formHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.formHeaderH3 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.closeBtn {
+  background: transparent;
+  font-size: 1.5rem;
+  border: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.inputText,
+.inputDate,
+.select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.formRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.halfWidth {
+  flex: 1;
+}
+
+/* File Upload */
+.fileUpload input[type="file"] {
+  display: none;
+}
+
+.uploadLabel {
+  background-color: #ecf0f1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #2c3e50;
+}
+
+.uploadLabel:hover {
+  background-color: #d0d3d4;
+}
+
+/* Form actions */
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}

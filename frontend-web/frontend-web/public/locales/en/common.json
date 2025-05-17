@@ -247,5 +247,56 @@
     "send": "Send Report",
     "success": "✅ Report sent successfully!",
     "error": "❌ Failed to send the report."
-  }
+  },
+  
+    "maintenance": {
+      "title": "Machine Maintenance Management System",
+      "all_machines": "Show all machines",
+      "new_tasks": "New tasks",
+      "schedule": "Maintenance schedule",
+      "no_appointments": "No maintenance appointments",
+      "machine": "Machine",
+      "date": "Date",
+      "time": "Time",
+      "technician": "Technician",
+      "status": "Status",
+      "not_assigned": "Not assigned",
+      "task": "Task",
+      "priority": "Priority",
+      "add_date": "Added date",
+      "actions": "Actions",
+      "convert": "Convert to appointment",
+      "delete": "Delete",
+      "no_tasks": "No new tasks",
+      "loading": "Loading data..."
+    },
+    "machine": {
+      "machineManagement": "Machine Management",
+      "addMachine": "Add Machine",
+      "machineName": "Machine Name",
+      "machineType": "Machine Type",
+      "status": "Status",
+      "functional": "Functional",
+      "broken": "Broken",
+      "inMaintenance": "In Maintenance",
+      "image": "Image",
+      "lastMaintenance": "Last Maintenance",
+      "add": "Add",
+      "update": "Update",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "loading": "Loading",
+      "type": "Type",
+      "addedSuccessfully": "Machine added successfully",
+      "updatedSuccessfully": "Machine updated successfully",
+      "deletedSuccessfully": "Machine deleted successfully",
+      "deleteConfirmation": "Are you sure you want to delete this machine?",
+      "loadError": "Error loading machines",
+      "formSubmitError": "Error submitting form",
+      "deleteError": "Error deleting machine",
+      "updateMachine": "Update Machine",
+      "deleteMachine": "Delete Machine"
+    }
+    
+  
 }
