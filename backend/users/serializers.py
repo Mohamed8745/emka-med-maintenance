@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Utilisateur, Magasinier, Operateur, Administrateur, Responsable, Technicien,Company
 from django.utils.text import slugify
+from rest_framework import serializers
+from .models import Company
 
 class UtilisateurSerializer(serializers.ModelSerializer):
     ROLE_CHOICES = [
@@ -65,3 +67,12 @@ class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
         fields = '__all__'
+
+
+class CompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Company
+        fields = '__all__'
+        extra_kwargs = {
+            'numidentifuc': {'validators': []},  # تعطيل التحقق من التكرار للتحديث
+        }

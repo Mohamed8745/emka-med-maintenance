@@ -18,6 +18,13 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.hashers import check_password
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import logout
+from rest_framework.generics import (
+    CreateAPIView, ListAPIView, RetrieveAPIView,
+    UpdateAPIView, DestroyAPIView
+)
+from rest_framework.permissions import IsAuthenticated
+from .models import Company
+from .serializers import CompanySerializer
 
 
 class UtilisateurViewSet(viewsets.ModelViewSet):
@@ -214,4 +221,32 @@ class StatusAPIView(APIView):
                 "image": request.build_absolute_uri(request.user.image.url) if request.user.image else None
             }
         })
-    
+   
+
+class CompanyCreateView(CreateAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+    permission_classes = [IsAuthenticated]
+
+class CompanyListView(ListAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+    permission_classes = [IsAuthenticated]
+
+class CompanyDetailView(RetrieveAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'pk'
+
+class CompanyUpdateView(UpdateAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'pk'
+
+class CompanyDeleteView(DestroyAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'pk'
