@@ -1,8 +1,7 @@
+# backend/models.py
 from django.db import models
 from django.utils import timezone
 from users.models import Technicien
-
-
 
 class Machine(models.Model):
     STATUT_CHOICES = [
@@ -29,6 +28,7 @@ class Schedule(models.Model):
     
     def __str__(self):
         return f"Schedule {self.id} - {self.date_creation}"
+
 class Intervention(models.Model):
     STATUT_CHOICES = [
         ('En attente', 'En attente'),
@@ -53,7 +53,6 @@ class Intervention(models.Model):
     def __str__(self):
         return f"Intervention {self.id} - {self.status}"
 
-
 class Tache(models.Model):
     EN_ATTENTE = 'En attente'
     EN_COURS = 'En cours'
@@ -65,6 +64,11 @@ class Tache(models.Model):
         (TERMINE, 'Terminé'),
     ]
 
+    PRIORITY_CHOICES = [
+        ('normal', 'Normal'),
+        ('urgent', 'Urgent'),
+    ]
+
     description = models.TextField()
     technicien = models.ForeignKey(Technicien, on_delete=models.CASCADE, related_name='taches')
     date_debut = models.DateTimeField()
@@ -72,13 +76,14 @@ class Tache(models.Model):
     statut = models.CharField(max_length=20, choices=STATUT_CHOICES, default=EN_ATTENTE)
     assigned_to = models.ForeignKey(Technicien, on_delete=models.SET_NULL, null=True, blank=True, related_name='assigned_taches')
     schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE, related_name='taches')
+    isAI = models.BooleanField(default=False)  # حقل جديد لدعم مهام الذكاء الاصطناعي
+    priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default='normal')  # حقل جديد للأولوية
 
     def accomplir(self):
         self.statut = self.TERMINE
+        self.date_fin = timezone.now()
         self.save()
         return True
 
     def __str__(self):
         return f"Tâche {self.id} - {self.statut}"
-
-

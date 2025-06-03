@@ -26,3 +26,13 @@ class TechnicienSerializer(serializers.ModelSerializer):
     class Meta:
         model = Technicien
         fields = '__all__'
+
+class TacheSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tache
+        fields = ['id', 'description', 'technicien', 'date_debut', 'date_fin', 'statut', 'assigned_to', 'schedule', 'isAI', 'priority']
+
+class ScheduleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Schedule
+        fields = '__all__'

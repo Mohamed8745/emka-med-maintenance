@@ -12,28 +12,42 @@ export interface StockPiece {
   };
   quantite: number;
 }
-  // تعريف بيانات الآلة
+// src/types.ts
+
+export interface StockPiece {
+  id: string;
+  piece: {
+    id: string;
+    name: string;
+    reference: string;
+    categorie: string;
+    prxUnitaire: number;
+    image?: string;
+  };
+  quantite: number;
+}
+
 export interface Machine {
   id: number;
   name: string;
   type: string;
 }
 
-// تعريف بيانات الجدول
 export interface Schedule {
   id: number;
   machineId: number;
   date: string;
   time: string;
   technician: string;
-  status: string;
+  status: 'scheduled' | 'completed' | 'cancelled';
+  notes?: string;
 }
 
-// تعريف بيانات المهام الجديدة
 export interface Task {
   id: number;
   machineId: number;
   task: string;
-  priority: string;
+  priority: 'low' | 'medium' | 'high';
   addedDate: string;
+  completed: boolean;
 }
